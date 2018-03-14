@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup} from '@angular/forms';
+import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @IonicPage()
@@ -11,36 +11,33 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class LoginnewPage {
 
-  
-  public form:FormGroup;
-  public email:AbstractControl;
-  public password:AbstractControl;
+
+  public form: FormGroup;
+  public email: AbstractControl;
+  public password: AbstractControl;
+  public device_type: AbstractControl;
+  public device_token_id: AbstractControl;
 
 
   myform: FormGroup;
-  responseData : any;
+  responseData: any;
   error: string;
   busy: boolean;
-  isChecked:boolean;
-  disabled:any;
-   constructor(    
-    private builder:FormBuilder,
+  isChecked: boolean;
+  disabled: any;
+  constructor(
+    private builder: FormBuilder,
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public navParams: NavParams,
-    public authService:AuthServiceProvider,
+    public authService: AuthServiceProvider,
     public loadingCtrl: LoadingController) {
 
 
- this.form = builder.group({
-  'email': ['', Validators.compose([Validators.required, Validators.email])],
-  'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
+    this.form = builder.group({
+      'email': ['', Validators.compose([Validators.required, Validators.email])],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
-
-    this.email = this.form.controls['email'];
-    this.password = this.form.controls['password'];
-    this.isChecked=false;
-
   }
 
 
@@ -50,82 +47,29 @@ export class LoginnewPage {
   }
 
 
- 
 
-  /*loginNow(values:Object){ 
-    this.presentLoadingCustom();
-    if (this.form.valid) {
-      let loginJsonData={
-        "email": this.email.value.toString(),
-        "password": this.password.value.toString(),
-       };
-  console.log(loginJsonData);
- 
-  //alert('avik');
-    this.authService.postData(loginJsonData,'users/login_api').then((result) => { 
-      
-    console.log(result);
-     
-      this.responseData = result;
-console.log('aaaaaaaa',this.responseData);
-    ///  alert(this.responseData.Ack);
-      if(this.responseData.Ack == 1)
-      {
-        localStorage.setItem('logindata', JSON.stringify(loginJsonData));
-     // this.responseData = result;
+  presentLoadingCustom() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'show',
+      content: 'Loading Please Wait...',
+      duration: 1000
+    });
 
-   //  if(this.responseData.UserDetails.user_type=='1'){
-     localStorage.setItem('userData', JSON.stringify(this.responseData.userdetail.User));
-    console.log("USERDATATATATATTATATTATA",JSON.stringify(this.responseData.userdetail.User));
-         //this.navCtrl.push(InvitedJobPage);
-        // this.navCtrl.push('ProfilePage');
-        //this.navCtrl.setRoot('NotificationSettingsPage');
-    // }
-    //  else{
+    loading.present();
+  }
 
-    //     let alert = this.alertCtrl.create({
-    //       title: 'Error2',
-    //       subTitle: 'Invalid Credentials. Try again.' ,
-    //       buttons: ['Ok']
-    //     });
-    //     alert.present();
 
-    //  }
+  loginNow(formData) { 
+    formData['device_token_id'] ='asdfa45645645646knllkjlkj4356546456';
+    formData['device_type']='android';
+    console.log(formData);
 
-      }
-      else{
-        let alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: 'Invalid Credentials. Try again.' ,
-          buttons: ['Ok']
-        });
-        alert.present();
-      }
-    }, (err) => {
+    this.authService.login(formData).subscribe(res => {
+      console.log(res);
+    }, err => {
       console.log(err);
-      // Error log
     });
   }
-    
-  }*/
-presentLoadingCustom() {
-  let loading = this.loadingCtrl.create({
-    spinner: 'show',
-    content: 'Loading Please Wait...',
-    duration: 1000
-  });
-
-  // loading.onDidDismiss(() => {
-  //   console.log('Dismissed loading');
-  // });
-
-  loading.present();
-}
-
-
-loginNow() {
-  this.navCtrl.push('HomePage');
-}
 
   onSignup() {
     this.navCtrl.push('SignupPage');

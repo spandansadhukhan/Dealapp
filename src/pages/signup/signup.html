@@ -1,150 +1,165 @@
-<!-- <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-		<ion-title>Signup</ion-title>
-	</ion-navbar>
-</ion-header> -->
-
 <ion-content class="login-page">
+  <form [formGroup]="rForm" novalidate>
 
-	<div class="logo">
-		<img src="assets/img/appicon.png" alt="Ionic logo">
-	
-		<h3>Sign Up</h3>
+    <div class="logo">
+      <img src="assets/img/appicon.png" alt="Ionic logo">
 
-<ion-grid>
-	<ion-row>
-		<ion-col col-6>
-			<div class="rdo-btn" text-right>
-				<ion-radio value="customer" name="type" style="top:4px !important;"></ion-radio>
-				Customer
-			</div>
-			
-		</ion-col>
-		<ion-col col-6>
-			<div class="rdo-btn" text-left>
-				<ion-radio value="seller" name="type" style="top:4px !important;"></ion-radio>
-				Seller
-			</div>		
-		</ion-col>
-	</ion-row>
-	
-</ion-grid>
-		
-	</div>
+      <h3>Sign Up</h3>
 
-	<form #loginForm="ngForm" novalidate>
-		<ion-list no-lines>
-			<ion-item>
-				<ion-label stacked color="primary">Full Name</ion-label>
-				<ion-input name="username" type="text" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left> Username is required </p> -->
-	
-			<ion-item>
-				<ion-label stacked color="primary">Email</ion-label>
-				<ion-input name="email" type="email" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left> Password is required	</p> -->
 
-			<ion-item>
-				<ion-label stacked color="primary">Password</ion-label>
-				<ion-input name="password" type="password" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <div class="rdo-btn" text-right>
+<!-- <ion-radio value="customer" name="type"  style="top:4px !important;"></ion-radio> -->
+<input type="radio" name="type" value="C" formControlName="type" />
 
-			<ion-item>
-				<ion-label stacked color="primary">Address</ion-label>
-				<ion-input name="address" type="text" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+              Customer
+            </div>
 
-			<ion-item>
-				<ion-label stacked color="primary">City</ion-label>
-				<ion-input name="city" type="text" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left>	Password is required </p> -->
+          </ion-col>
+          <ion-col col-6>
+            <div class="rdo-btn" text-left>
+<!-- <ion-radio value="seller" name="type"  style="top:4px !important;"></ion-radio> -->
+<input type="radio" name="type" value="V" formControlName="type" />
+              Seller
+            </div>
+          </ion-col>
+        </ion-row>
 
-			<ion-item>
-				<ion-label stacked color="primary">State</ion-label>
-				<ion-input name="state" type="text" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left> Password is required	</p> -->
+      </ion-grid>
 
-			<ion-item>
-				<ion-label stacked color="primary">Country</ion-label>
-				<ion-input name="country" type="text" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left>	Password is required </p> -->
+    </div>
 
-			<ion-item>
-				<ion-label stacked color="primary">Post Code</ion-label>
-				<ion-input name="country" type="text" required>
-				</ion-input>
-			</ion-item>
-			<!-- <p ion-text color="danger" padding-left>	Password is required </p> -->
-	
-			<ion-grid class="no-p-l no-p-r no-p-b">
-				<ion-row>
-					<ion-col col-12 class="no-p-l">
-						<ion-item>
-							<ion-label style="margin-right:0 !important;" >I have read & agree to the Privacy policy</ion-label>
-							<ion-checkbox color="dark" checked="true"></ion-checkbox>
-						</ion-item>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-	
-			<div padding class="no-p-t p-b-5">
-				<button ion-button class="sign-in-btn" (click)="onLogin(loginForm)" type="submit" block>Register</button>
-			</div>
-	
-	
-	
-			<ion-grid class="no-p-b">
-				<ion-row class="line-row">
-					<ion-col col-5 class="line"></ion-col>
-					<ion-col col-2 class="no-p-t" text-center> OR </ion-col>
-					<ion-col col-5 class="line"></ion-col>
-				</ion-row>
-			</ion-grid>
-	
-			<div padding class="no-p-b p-t-5">
-				<button ion-button class="fb-btn" (click)="onLogin(loginForm)" type="submit" block>
-					<img src="assets/img/fb-icon.png" alt="Facebook logo"> Login with Facebook </button>
-			</div>
-	
-	
-			<div padding class="p-t-5">
-				<button ion-button class="g-plus-btn" (click)="onLogin(loginForm)" type="submit" block>
-					<img src="assets/img/g-plus-icon.png" alt="Facebook logo"> Login with Facebook </button>
-			</div>
-	
-	
-	
-			<p class="bottom-text">Already have account?
-				<span> Sign In </span>
-			</p>
-	
-		</ion-list>
-	
-		<!-- <ion-row responsive-sm>
-				<ion-col>
-					<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
-				</ion-col>
-				<ion-col>
-					<button ion-button (click)="onSignup()" color="light" block>Signup</button>
-				</ion-col>
-			</ion-row> -->
-	</form>
+    <!-- <form #loginForm="ngForm" [formGroup]="ngForm" novalidate> -->
+
+
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label stacked color="primary">First Name</ion-label>
+        <ion-input name="first_name" formControlName="first_name" type="text" required>
+        </ion-input>
+      </ion-item>
+      <p *ngIf="!rForm.controls['first_name'].valid && rForm.controls['first_name'].touched" ion-text color="danger" padding-left>
+     First Name is required </p>
+
+
+
+      <ion-item>
+        <ion-label stacked color="primary">Last Name</ion-label>
+        <ion-input name="last_name" formControlName="last_name" type="text" required>
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['last_name'].valid && rForm.controls['last_name'].touched" ion-text color="danger" padding-left>
+ Last Name is required </p>
+
+
+      <ion-item>
+        <ion-label stacked color="primary">Email</ion-label>
+        <ion-input name="email" formControlName="email" type="email" required>
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched" ion-text color="danger" padding-left>
+Email is required </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">Address</ion-label>
+        <ion-input name="address" type="text" formControlName="address" required>
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['address'].valid && rForm.controls['address'].touched" ion-text color="danger" padding-left>
+ Address is required </p>
+
+
+      <ion-item>
+        <ion-label stacked color="primary">City</ion-label>
+        <ion-input name="city" type="text" formControlName="city" required>
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['city'].valid && rForm.controls['city'].touched" ion-text color="danger" padding-left>
+City is required </p>
+
+
+      <ion-item>
+        <ion-label stacked color="primary">State</ion-label>
+        <ion-input name="state" type="text" formControlName="state" required>
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['state'].valid && rForm.controls['state'].touched" ion-text color="danger" padding-left>
+ State is required </p>
+      <ion-item>
+        <ion-label stacked color="primary">Country</ion-label>
+        <ion-input name="country" type="text" formControlName="country" required>
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['country'].valid && rForm.controls['country'].touched" ion-text color="danger" padding-left>
+Country is required </p>
+
+
+      <ion-item>
+        <ion-label stacked color="primary">Password</ion-label>
+        <ion-input name="password" type="text" formControlName="password" required>
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched" ion-text color="danger" padding-left>
+Password is required </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">Confirm Password</ion-label>
+<ion-input name="con_password" type="text" formControlName="con_password" required>
+
+        </ion-input>
+      </ion-item>
+<p *ngIf="!rForm.controls['password'].valid && rForm.controls['con_password'].touched" ion-text color="danger" padding-left>
+
+  Confirm Password is required </p>
+
+
+      <ion-grid class="no-p-l no-p-r no-p-b">
+        <ion-row>
+          <ion-col col-12 class="no-p-l">
+            <ion-item>
+              <ion-label style="margin-right:0 !important;">I have read & agree to the Privacy policy</ion-label>
+              <ion-checkbox color="dark" checked="true"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div padding class="no-p-t p-b-5">
+        <button ion-button class="sign-in-btn" (click)="onSubmit(rForm.value)" type="submit" block>Register</button>
+
+      </div>
+
+
+
+      <ion-grid class="no-p-b">
+        <ion-row class="line-row">
+          <ion-col col-5 class="line"></ion-col>
+          <ion-col col-2 class="no-p-t" text-center> OR </ion-col>
+          <ion-col col-5 class="line"></ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div padding class="no-p-b p-t-5">
+        <button ion-button class="fb-btn" (click)="onLogin(loginForm)" type="submit" block>
+          <img src="assets/img/fb-icon.png" alt="Facebook logo"> Login with Facebook </button>
+      </div>
+
+
+      <div padding class="p-t-5">
+        <button ion-button class="g-plus-btn" (click)="onLogin(loginForm)" type="submit" block>
+          <img src="assets/img/g-plus-icon.png" alt="Facebook logo"> Login with Facebook </button>
+      </div>
+
+
+
+      <p class="bottom-text">Already have account?
+        <span> Sign In </span>
+      </p>
+
+    </ion-list>
+
+  </form>
 
 </ion-content>
