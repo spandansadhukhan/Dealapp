@@ -54,8 +54,12 @@
   </ion-item>
 
     <div class="categories-pic-area">
-      <div class="categories-pic"><img src="assets/img/cate-pic-a.png" alt="Ionic logo"></div>
-      <div class="categories-pic">
+
+      <div class="categories-pic" *ngFor="let pc of popularcategorylist">
+        <img src="{{pc.category_image}}" alt="Ionic logo" (click)= "deallist(pc.type,pc.category_id)">
+    
+      </div>
+      <!-- <div class="categories-pic">
         <img src="assets/img/cate-pic-b.png" alt="">
       </div>
       <div class="categories-pic">
@@ -78,14 +82,21 @@
       </div>
       <div class="categories-pic">
         <img src="assets/img/cate-pic-d.png" alt="">
-      </div>
+      </div> -->
     </div>
 
     <ion-item class="trending">
-      <h2> <span class="underline">Trending</span> Deals</h2>
+      <h2> <span class="underline">COUPONS</span> HERE</h2>
    </ion-item>
    <div class="trending-pic-area">
-    <div class="trending-pic">
+
+    <div class="trending-pic" *ngFor="let c of categorylist">
+      <img src="{{c.category_image}}" alt="" (click)= "couponlist(c.type,c.category_id)">
+      <p class="boxing-text">{{c.category_name}}</p>
+      
+    </div>
+
+    <!-- <div class="trending-pic">
       <img src="assets/img/trnding-a.png" alt="">
       <p class="boxing-text">Kick boxing</p>
       <p class="price-text no-m-b no-m-t">Price: $ 500.00</p>
@@ -123,15 +134,7 @@
       <p class="price-text no-m-b no-m-t">Price: $ 500.00</p>
       <p class="green-text no-p-t no-m-t no-m-b">$ 200.02</p>
       <button ion-button color="danger">View Deal</button>
-    </div>
-
-    <div class="trending-pic">
-      <img src="assets/img/trnding-a.png" alt="">
-      <p class="boxing-text">Kick boxing</p>
-      <p class="price-text no-m-b no-m-t">Price: $ 500.00</p>
-      <p class="green-text no-p-t no-m-t no-m-b">$ 200.02</p>
-      <button ion-button color="danger">View Deal</button>
-    </div>
+    </div> -->
 
    </div>
    
