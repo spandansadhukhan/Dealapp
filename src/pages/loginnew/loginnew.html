@@ -8,85 +8,79 @@
 </ion-header> -->
 
 <ion-content>
-	<div class="logo">
-		<img src="assets/img/appicon.png" alt="Ionic logo">
+  <div class="logo">
+    <img src="assets/img/appicon.png" alt="Ionic logo">
 
-		<h3>LogIn</h3>
-	</div>
-
-	<form [formGroup]="form" (ngSubmit)="loginNow(form.value)"  #loginForm="ngForm">
-		<ion-list no-lines>
-			<ion-item>
-				<ion-label stacked color="primary">Email</ion-label>
-				<ion-input   type="text" [formControl]="email" required>
+    <h3>LogIn</h3>
+  </div>
+  <!-- <form  [formGroup]="form" (ngSubmit)="loginNow(form.value)"> -->
+  <form [formGroup]="form" (ngSubmit)="loginNow(form.value)" #loginForm="ngForm">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label stacked color="primary">Email</ion-label>
+        <ion-input type="text" formControlName="email" required>
         </ion-input>
-        <div class="text-danger" *ngIf="(email.hasError('email', 'email')||!email.valid) && email.touched">
+        <div class="text-danger" *ngIf="(form.controls['email'].hasError('email', 'email')||!form.controls['email'].valid) && form.controls['email'].touched">
           Please enter the correct email, this email not valid.
-          </div>
-			</ion-item>
-			<!-- <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-				Username is required
-			</p> -->
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked color="primary">Password</ion-label>
+        <ion-input type="password" formControlName="password" required>
 
-			<ion-item>
-				<ion-label stacked color="primary">Password</ion-label>
-				<ion-input type="password"  [formControl]="password" required>
         </ion-input>
-        <div class="text-danger" *ngIf="!password.valid && password.touched">Password Required</div>
-			</ion-item>
-			<!-- <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
-				Password is required
-			</p> -->
+        <div class="text-danger" *ngIf="!form.controls['password'].valid && form.controls['password'].touched">Password Required</div>
+      </ion-item>
+      <ion-grid class="no-p-l no-p-r no-p-b">
+        <ion-row>
+          <ion-col col-6 class="no-p-l">
+            <ion-item>
+              <ion-label>Remember me</ion-label>
+              <ion-checkbox color="dark" checked="true"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6 class="no-p-r">
+            <ion-item>
+              <ion-label text-right>Forgot Password?</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
-			
-			<ion-grid class="no-p-l no-p-r no-p-b">
-					<ion-row>
-						<ion-col col-6 class="no-p-l">
-							<ion-item>
-								<ion-label>Remember me</ion-label>
-								<ion-checkbox color="dark" checked="true"></ion-checkbox>
-							</ion-item>							
-						</ion-col>
-						<ion-col col-6 class="no-p-r">
-							<ion-item>
-								<ion-label text-right >Forgot Password?</ion-label>								
-							</ion-item>
-						</ion-col>
-					</ion-row>
-				</ion-grid>
+      <div padding class="no-p-t p-b-5">
+        <button ion-button class="sign-in-btn" [disabled]="!form.valid" type="submit" block>Sign In</button>
+      </div>
 
-				<div padding class="no-p-t p-b-5" >
-					<button ion-button class="sign-in-btn" [disabled]="!loginForm.valid"  type="submit" block>Sign In</button>
-				</div>
-				
-						
-				
-				<ion-grid class="no-p-b">
-					<ion-row class="line-row">
-						<ion-col col-5 class="line"></ion-col>
-						<ion-col col-2 class="no-p-t" text-center> OR </ion-col>
-						<ion-col col-5 class="line"></ion-col>
-					</ion-row>
-				</ion-grid>
 
-				<div padding class="no-p-b p-t-5">
-					<button ion-button class="fb-btn" (click)="onLogin(loginForm)" type="submit" block>
-						<img src="assets/img/fb-icon.png" alt="Facebook logo"> Login with Facebook </button>
-				</div>
-							
-					
-				<div padding class="p-t-5">
-					<button ion-button class="g-plus-btn" (click)="onLogin(loginForm)" type="submit" block>
-						<img src="assets/img/g-plus-icon.png" alt="Facebook logo"> Login with Facebook </button>
-				</div>
-					
-				
 
-				<p class="bottom-text">Don’t have account? <span (click)="onSignup()"> Sign Up </span></p>
+      <ion-grid class="no-p-b">
+        <ion-row class="line-row">
+          <ion-col col-5 class="line"></ion-col>
+          <ion-col col-2 class="no-p-t" text-center> OR </ion-col>
+          <ion-col col-5 class="line"></ion-col>
+        </ion-row>
+      </ion-grid>
 
-		</ion-list>
+      <div padding class="no-p-b p-t-5">
+        <button ion-button class="fb-btn" (click)="onLogin(loginForm)" type="submit" block>
+          <img src="assets/img/fb-icon.png" alt="Facebook logo"> Login with Facebook </button>
+      </div>
 
-		<!-- <ion-row responsive-sm>
+
+      <div padding class="p-t-5">
+        <button ion-button class="g-plus-btn" (click)="onLogin(loginForm)" type="submit" block>
+          <img src="assets/img/g-plus-icon.png" alt="Facebook logo"> Login with Facebook </button>
+      </div>
+
+
+
+      <p class="bottom-text">Don’t have account?
+        <span (click)="onSignup()"> Sign Up </span>
+      </p>
+
+    </ion-list>
+
+    <!-- <ion-row responsive-sm>
 			<ion-col>
 				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
 			</ion-col>
@@ -94,7 +88,6 @@
 				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
 			</ion-col>
 		</ion-row> -->
-	</form>
+  </form>
 
 </ion-content>
-

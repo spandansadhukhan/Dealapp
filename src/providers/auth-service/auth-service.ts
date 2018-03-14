@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import {Headers, Http, Response, URLSearchParams  } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController } from 'ionic-angular';
-let apiUrl = 'http://111.93.169.90/team6/deal/';
+import { Config } from './../../config';
+
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -12,8 +14,11 @@ let apiUrl = 'http://111.93.169.90/team6/deal/';
 */
 @Injectable()
 export class AuthServiceProvider {
-  
-  constructor(public http: Http,public loadingCtrl: LoadingController) {
+  apiUrl = Config.baseUrl;
+  constructor(
+    public http: Http,
+    public loadingCtrl: LoadingController
+  ) {
     console.log('Hello AuthServiceProvider Provider');
   }
   public details ;
@@ -26,7 +31,7 @@ export class AuthServiceProvider {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
 
-      this.http.post(apiUrl + type, JSON.stringify(credentials))
+      this.http.post(this.apiUrl + type, JSON.stringify(credentials))
         .subscribe(res => {
           console.log(res);
           resolve(res.json());
@@ -40,6 +45,20 @@ export class AuthServiceProvider {
 
   }
 
+  signup(data:object):Observable<any>{
+    console.log(data);
+    return this.http.post(this.apiUrl +'users/registration_api',data).map((res:Response)=>{
+      return res.json();
+    });
+  }
+
+  login(data: object): Observable<any> {
+    console.log(data);
+    return this.http.post(this.apiUrl + 'users/applogin', data).map((res: Response) => {
+      return res.json();
+    });
+  }
+
 
   getData(type) {
     let loading = this.loadingCtrl.create({
@@ -49,7 +68,7 @@ export class AuthServiceProvider {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
 
-      this.http.get(apiUrl + type)
+      this.http.get(this.apiUrl + type)
         .subscribe(res => {
           //let details = res;
           //console.log(details);

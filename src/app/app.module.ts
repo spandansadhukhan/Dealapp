@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { UserProvider } from '../providers/user/user';
 
 //import { HomePage } from '../pages/login/login';
 
@@ -27,7 +28,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     AuthServiceProvider,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}
