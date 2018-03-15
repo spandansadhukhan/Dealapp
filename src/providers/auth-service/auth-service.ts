@@ -59,6 +59,12 @@ export class AuthServiceProvider {
     });
   }
 
+  getdetails(data: object): Observable<any> {
+    return this.http.post(this.apiUrl + 'users/getprofiledetails_api', data).map((res: Response) => {
+      return res.json();
+    });
+  }
+
 
   getData(type) {
     let loading = this.loadingCtrl.create({

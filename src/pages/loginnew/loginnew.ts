@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -31,6 +32,7 @@ export class LoginnewPage {
     public alertCtrl: AlertController,
     public navParams: NavParams,
     public authService: AuthServiceProvider,
+    private storage: Storage,
     public loadingCtrl: LoadingController) {
 
 
@@ -72,7 +74,21 @@ export class LoginnewPage {
         buttons: ['OK']
       });
       alert.present();
-      this.navCtrl.push('HomePage');
+        this.storage.ready().then(() => {
+          this.storage.set('userType', res['type']).then(() => {
+            this.storage.set('fullName', res.userdetail.User['first_name']).then(() => {
+              this.storage.set('fullName', res.userdetail.User['last_name']).then(() => {
+                this.storage.set('uid', res.userdetail.User['id']).then(() => {
+                this.navCtrl.push('HomePage');
+                this.storage.get('uid').then(res=>{
+                  console.log(res);
+                }).catch();
+              });
+            });
+            });
+          });
+        });
+      
     }else{
 
       const alert = this.alertCtrl.create({

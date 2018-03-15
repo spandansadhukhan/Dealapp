@@ -15,41 +15,66 @@
 
 
 <ion-content>
-  <form #loginForm="ngForm" novalidate>
+  <form #loginForm="ngForm"  [formGroup]="aForm" novalidate>
     <ion-list no-lines>
       <ion-item>
         <ion-label stacked color="primary">First Name</ion-label>
-        <ion-input name="username" type="text" placeholder="Spandan" required>
-        </ion-input>
+<ion-input name="first_name" formControlName="first_name" value="" type="text" placeholder="first name" required>
+</ion-input>
       </ion-item>
       <!-- <p ion-text color="danger" padding-left> Username is required </p> -->
-  
-      <ion-item>
-        <ion-label stacked color="primary">Last Name</ion-label>
-        <ion-input name="" type="text" placeholder="Cool" required>
-        </ion-input>
-      </ion-item>
-      <!-- <p ion-text color="danger" padding-left> Password is required	</p> -->
+
+<ion-item>
+  <ion-label stacked color="primary">Last Name</ion-label>
+  <ion-input name="last_name" value="" formControlName="last_name" type="text" placeholder="Last name" required>
+  </ion-input>
+</ion-item>
+ <!-- <p ion-text color="danger" padding-left> Password is required	</p> -->
   
       <ion-item>
         <ion-label stacked color="primary">Email Id</ion-label>
-        <ion-input name="email" type="email" placeholder="spandan@natitsolved.com" required>
+        <ion-input name="email" type="email" formControlName="email" placeholder="Email Id" value="" required>
         </ion-input>
       </ion-item>
       <!-- <p ion-text color="danger" padding-left> Password is required </p> -->
   
       <ion-item>
-        <ion-label stacked color="primary">Mobile No</ion-label>
-        <ion-input name="" type="text" placeholder="" required>
-        </ion-input>
+        <ion-label stacked color="primary">Address</ion-label>
+<ion-input name="address" type="text" formControlName="address" placeholder="Address" value="" required>
+ </ion-input>
       </ion-item>
       <!-- <p ion-text color="danger" padding-left> Password is required </p> -->
   
-      <ion-item>
+
+<ion-item>
+  <ion-label stacked color="primary">City</ion-label>
+  <ion-input name="city" type="text" placeholder="City" formControlName="city"  value="" required>
+  </ion-input>
+</ion-item>
+<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+
+<ion-item>
+  <ion-label stacked color="primary">State</ion-label>
+  <ion-input name="state" type="text" placeholder="State" formControlName="state"  value="" required>
+  </ion-input>
+</ion-item>
+<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+
+<ion-item>
+  <ion-label stacked color="primary">Country</ion-label>
+<ion-input name="country" type="text" placeholder="Country" formControlName="country" value="" required>
+
+  </ion-input>
+</ion-item>
+<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+
+
+
+      <!-- <ion-item>
         <ion-label stacked color="primary">Paypal Email</ion-label>
         <ion-input name="" type="text" placeholder="sp@gmail.com" required>
         </ion-input>
-      </ion-item>
+      </ion-item> -->
       <!-- <p ion-text color="danger" padding-left>	Password is required </p> -->
   
       <ion-grid class="no-p-l no-p-r no-p-b">
@@ -64,7 +89,7 @@
       </ion-grid>
   
       <div padding class="no-p-t p-b-5">
-        <button ion-button class="sign-in-btn" (click)="onLogin(loginForm)" type="submit" block>Save Changes</button>
+        <button ion-button class="sign-in-btn" (click)="onSubmit(loginForm)" type="submit" block>Save Changes</button>
       </div>
   
   

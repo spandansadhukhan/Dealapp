@@ -7,6 +7,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { UserProvider } from '../providers/user/user';
+import { IonicStorageModule } from '@ionic/storage';
 
 //import { HomePage } from '../pages/login/login';
 
@@ -17,7 +18,8 @@ import { UserProvider } from '../providers/user/user';
   ],
   imports: [
     BrowserModule,HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,4 +34,4 @@ import { UserProvider } from '../providers/user/user';
     UserProvider
   ]
 })
-export class AppModule {}
+export class AppModule {} 
