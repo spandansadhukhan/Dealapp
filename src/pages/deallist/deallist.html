@@ -38,10 +38,12 @@
         <p> <span class="price">Price:</span> 
           <span class="cross-text"> $ {{d.deal_price}} </span> 
           <span class="green-text"> $ {{d.deal_discount_price}}</span></p>
-        <button ion-button outline item-end>View Deal</button>
+        <button ion-button outline item-end (click)= "dealdetails(d.deal_id)">View Deal</button>
       </ion-item>
   
-      
+      <ion-item *ngIf="deallist== ''"  >
+        {{msg}}
+      </ion-item>
       <!-- <ion-item>
         <ion-thumbnail item-start>
           <img src="assets/img/search-img-a.png">
