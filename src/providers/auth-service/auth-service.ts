@@ -54,7 +54,7 @@ export class AuthServiceProvider {
 
   login(data: object): Observable<any> {
     console.log(data);
-    return this.http.post(this.apiUrl + 'users/applogin', data).map((res: Response) => {
+    return this.http.post(this.apiUrl +'users/applogin', data).map((res: Response) => {
       return res.json();
     });
   }

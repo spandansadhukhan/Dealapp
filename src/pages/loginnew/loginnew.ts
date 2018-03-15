@@ -66,6 +66,21 @@ export class LoginnewPage {
 
     this.authService.login(formData).subscribe(res => {
       console.log(res);
+      if(res.ack==1){
+      const alert = this.alertCtrl.create({
+        title: res.msg,
+        buttons: ['OK']
+      });
+      alert.present();
+      this.navCtrl.push('HomePage');
+    }else{
+
+      const alert = this.alertCtrl.create({
+        title: res.msg,
+        buttons: ['OK']
+      });
+      alert.present(); 
+    }
     }, err => {
       console.log(err);
     });
