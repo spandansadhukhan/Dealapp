@@ -30,18 +30,25 @@
   <ion-content>
     <ion-list>
   
-      <ion-item>
+      <ion-item *ngFor="let cp of couponlist" >
         <div class="box-area" text-center item-start>
-          <h1>80%</h1>
+          <h1>{{cp.coupon_offer}}%</h1>
           <p>Off</p>
         </div>
         <p class="promo"> <span class="red-bg">Promo Code</span> <span class="gray-text"> 17,581 used today </span></p>
-        <h2>Big Bilion Discount</h2>
-        <p> Shop these deals of the day. </p>
+        <h2>{{cp.coupon_name}}</h2>
+        <p> {{cp.coupon_description}}</p>
         <button ion-button outline item-end> get coupon code</button>
       </ion-item>
-  
-      <ion-item>
+      
+      <ion-item *ngIf="couponlist== ''" >
+        
+        {{msg}}
+       
+      </ion-item>
+
+
+      <!-- <ion-item>
         <div class="box-area" text-center item-start>
           <h1>80%</h1>
           <p>Off</p>
@@ -81,21 +88,9 @@
         <h2>Big Bilion Discount</h2>
         <p> Shop these deals of the day. </p>
         <button ion-button outline item-end> get coupon code</button>
-      </ion-item>
+      </ion-item> -->
   
-      <ion-item>
-        <div class="box-area" text-center item-start>
-          <h1>80%</h1>
-          <p>Off</p>
-        </div>
-        <p class="promo">
-          <span class="red-bg">Promo Code</span>
-          <span class="gray-text"> 17,581 used today </span>
-        </p>
-        <h2>Big Bilion Discount</h2>
-        <p> Shop these deals of the day. </p>
-        <button ion-button outline item-end> get coupon code</button>
-      </ion-item>
+      
   
     
     </ion-list>

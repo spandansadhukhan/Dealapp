@@ -37,6 +37,29 @@ export class MyApp {
           this.nav.setRoot('ChangepasswordPage');
          
           }
+
+
+          public deallist(){
+            //alert('ok');
+            //console.log(location);
+            //if(location==0){
+              this.nav.setRoot('MyaccountPage');
+              
+           // }
+            
+              }
+
+              public dealadd(){
+                //alert('ok');
+                //console.log(location);
+                //if(location==0){
+                  this.nav.setRoot('DealaddPage');
+                  
+               // }
+                
+                  }
+
+
   
 }
 

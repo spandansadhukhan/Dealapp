@@ -19,6 +19,7 @@ export class DeallistPage {
   //public brandresult:any;
  responseData : any;
  public deallist:any;
+ public msg:any;
  public type:any;
  public id:any;
 
@@ -57,6 +58,7 @@ export class DeallistPage {
       else
       {
         this.deallist = '';
+        this.msg =this.responseData.msg; 
       }
      
     }, (err) => {
