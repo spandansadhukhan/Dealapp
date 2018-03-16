@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {Headers, Http, Response, URLSearchParams  } from '@angular/http';
+import { Headers, Http, Response, URLSearchParams, RequestOptions, RequestMethod, Request } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController } from 'ionic-angular';
@@ -59,10 +59,41 @@ export class AuthServiceProvider {
     });
   }
 
+  
   getdetails(data: object): Observable<any> {
-    return this.http.post(this.apiUrl + 'users/getprofiledetails_api', data).map((res: Response) => {
+    let requestoptions = new RequestOptions({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'users/getprofiledetails_api',
+      body: JSON.stringify(data)
+    });
+    return this.http.request(new Request(requestoptions))
+      .map((res: Response) => {
+        if (res) {
+          return res.json();
+        }
+      });
+    // return this.http.post(this.apiUrl + 'users/getprofiledetails_api', data).map((res: Response) => {
+    //   return res.json();
+    // });
+  }
+
+  updateprofile(data: object): Observable<any> {
+    return this.http.post(this.apiUrl + 'users/edituserprofile_api', data).map((res: Response) => {
       return res.json();
     });
+  }
+  changepass(data: object): Observable<any> {
+    let requestchangeoptions = new RequestOptions({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'users/change_password_api',
+      body: JSON.stringify(data)
+    });
+    return this.http.request(new Request(requestchangeoptions))
+      .map((res: Response) => {
+        if (res) {
+          return res.json();
+        }
+      });
   }
 
 
@@ -84,7 +115,7 @@ export class AuthServiceProvider {
         }, (err) => {
           console.log(err);
           reject(err);
-          loading.dismiss();
+          loading.dismiss(); 
         });
     });
 

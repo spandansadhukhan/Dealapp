@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Storage } from '@ionic/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -23,7 +23,8 @@ export class MyaccountPage {
      public navParams: NavParams,
     public authService: AuthServiceProvider,
     private storage: Storage,
-    private builder: FormBuilder
+    private builder: FormBuilder,
+    public alertCtrl: AlertController
   ) {
     this.aForm = builder.group({
       'first_name': [null, Validators.required],
@@ -40,20 +41,52 @@ export class MyaccountPage {
 
     this.storage.ready().then(()=>{
       this.storage.get('uid').then(val => {
-        this.authService.getdetails({ user_id: val }).subscribe(res => {
-          console.log(res.userInfo.Users.first_name);
-          this.aForm.controls['first_name'].setValue(res.userInfo.Users.first_name);
-          this.aForm.controls['last_name'].setValue(res.userInfo.Users.last_name);
-          this.aForm.controls['email'].setValue(res.userInfo.Users.email);
-          this.aForm.controls['address'].setValue(res.userInfo.Users.address);  
-          this.aForm.controls['city'].setValue(res.userInfo.Users.city); 
-         this.aForm.controls['address'].setValue(res.userInfo.Users.address); 
-          this.aForm.controls['country'].setValue(res.userInfo.Users.country);    
-        });
+        console.log(val);
+        if(val){
+          this.authService.getdetails({ user_id: val }).subscribe(res => {
+            console.log(res.userInfo.User.first_name);
+            this.aForm.controls['first_name'].setValue(res.userInfo.User.first_name);
+            this.aForm.controls['last_name'].setValue(res.userInfo.User.last_name);
+            this.aForm.controls['email'].setValue(res.userInfo.User.email);
+            this.aForm.controls['address'].setValue(res.userInfo.User.address);
+            this.aForm.controls['city'].setValue(res.userInfo.User.city);
+            this.aForm.controls['address'].setValue(res.userInfo.User.address);
+            this.aForm.controls['country'].setValue(res.userInfo.User.country);
+          });
+        }
+        
       });
     }).catch();
-    
+}
+
+  onSubmit(formData) {
+    console.log(this.aForm.valid);
+     this.storage.get('uid').then(val => {
+        formData['id'] = val;
+      });
+      this.authService.updateprofile(formData).subscribe(res => {
+        console.log(formData);
+        if (res) {
+          console.log(res);
+          const alert = this.alertCtrl.create({
+            title: 'Profile Updated Successfully',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+      }, err => {
+        console.log(err);
+        const alert = this.alertCtrl.create({
+          title: 'Auth Failed!',
+          buttons: ['OK']
+        });
+        alert.present();
+      });
+
+   
   }
+
+
 
   ionViewDidLoad() {
        

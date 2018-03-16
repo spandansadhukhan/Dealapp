@@ -32,7 +32,7 @@ export class MyApp {
     
       }
 
-      public changepassword(){
+      public changepassword(){ 
         
           this.nav.setRoot('ChangepasswordPage');
          
