@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 /**
  * Generated class for the CouponlistPage page.
@@ -24,7 +24,7 @@ export class CouponlistPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public authService:AuthServiceProvider) {
+    public authService:AuthServiceProvider,public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -65,5 +65,18 @@ export class CouponlistPage {
   }
 
 
+  openModal() {
 
+    let modal = this.modalCtrl.create("ModalContentPage");
+    modal.present();
+  }
 }
+
+
+
+
+
+
+  
+
+

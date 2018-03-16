@@ -5,12 +5,13 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+    <ion-navbar>
     <ion-toolbar>
       <ion-row>
         <ion-col class="no-p-r">
-          <button ion-button class="trnsprnt-btn">
-            <ion-icon name="arrow-back"></ion-icon>
-          </button>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
         </ion-col>
         <ion-col col-9 class="no-p-l no-p-r">
           <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="Search">
@@ -24,6 +25,7 @@
       </ion-row>
   
     </ion-toolbar>
+    </ion-navbar>
   </ion-header>
   
   
@@ -38,7 +40,7 @@
         <p class="promo"> <span class="red-bg">Promo Code</span> <span class="gray-text"> 17,581 used today </span></p>
         <h2>{{cp.coupon_name}}</h2>
         <p> {{cp.coupon_description}}</p>
-        <button ion-button outline item-end> get coupon code</button>
+        <button ion-button outline item-end (click)="openModal()"> get coupon code</button>
       </ion-item>
       
       <ion-item *ngIf="couponlist== ''" >
