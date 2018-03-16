@@ -59,6 +59,13 @@ export class LoginnewPage {
 
     loading.present();
   }
+  forgetpass(){
+   
+    this.navCtrl.push("ForgetpassPage");
+  }
+
+  
+
 
 
   loginNow(formData) { 

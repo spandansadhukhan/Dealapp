@@ -60,6 +60,8 @@ export class AuthServiceProvider {
   }
 
   
+
+  
   getdetails(data: object): Observable<any> {
     let requestoptions = new RequestOptions({
       method: RequestMethod.Post,
@@ -83,6 +85,7 @@ export class AuthServiceProvider {
     });
   }
   changepass(data: object): Observable<any> {
+    
     let requestchangeoptions = new RequestOptions({
       method: RequestMethod.Post,
       url: this.apiUrl + 'users/change_password_api',
@@ -95,6 +98,22 @@ export class AuthServiceProvider {
         }
       });
   }
+
+   forgetpass(data: object): Observable < any > {
+     console.log(data);
+     let requestforgetoptions = new RequestOptions({
+       method: RequestMethod.Post,
+       url: this.apiUrl + 'users/apiforgot_password',
+       body: JSON.stringify(data)
+     });
+     console.log(requestforgetoptions);
+     return this.http.request(new Request(requestforgetoptions))
+       .map((res: Response) => {
+         if (res) {
+           return res.json();
+         }
+       });
+    }
 
 
   getData(type) {

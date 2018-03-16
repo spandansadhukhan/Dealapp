@@ -19,7 +19,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ChangepasswordPage {
   changeForm: FormGroup;
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public authService: AuthServiceProvider,
     private storage: Storage,
@@ -30,27 +30,26 @@ export class ChangepasswordPage {
       'current_password': [null, Validators.required],
       'new_password': [null, Validators.required],
       'con_password': [null, Validators.required]
-     });
+    });
   }
- 
- 
+
+
   changepass(formData) {
     this.storage.get('uid').then(val => {
       console.log(val);
       formData['user_id'] = val;
     });
-   // console.log(formData);
-  
-   this.authService.changepass(formData).subscribe(res => {
-     //console.log(formData)
-     // console.log(res);
-      if (res.ACK == 1) {
+    console.log(formData);
+    // return;
+    this.authService.changepass(formData).subscribe(res => {
+     if (res.ACK == 1) {
         const alert = this.alertCtrl.create({
-              title: res.msg,
+          title: res.msg,
           buttons: ['OK']
         });
         alert.present();
-      } else {
+      } 
+      else {
 
         const alert = this.alertCtrl.create({
           title: res.msg,
@@ -62,7 +61,7 @@ export class ChangepasswordPage {
       console.log(err);
     });
   }
-  
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangepasswordPage');
