@@ -27,16 +27,16 @@ export class DealaddPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DealaddPage');
-    //this.id = this.storage.get('uid');
+    //this.id = this.storage.set('userId', this.userId);
    //alert(this.id);
     //this.usershop(this.id);
   }
 
 
-  usershop(id){
-    this.storage.get('uid').then(val => {
-    console.log(val);
-    });
+ /* usershop(){
+    //this.storage.get('uid').then((val) => {
+    //alert(val);
+    //});
     //alert(type);
     let serval={
       "id": id
@@ -63,6 +63,6 @@ export class DealaddPage {
       // Error log
     });
   }
-
+*/
 
 }
