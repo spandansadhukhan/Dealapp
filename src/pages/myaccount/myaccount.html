@@ -22,28 +22,33 @@
 <ion-input name="first_name" formControlName="first_name" value="" type="text" placeholder="first name" required>
 </ion-input>
       </ion-item>
-      <!-- <p ion-text color="danger" padding-left> Username is required </p> -->
+   <p *ngIf="!aForm.controls['first_name'].valid && aForm.controls['first_name'].touched" ion-text color="danger" padding-left>
+    First Name is required </p>
+
 
 <ion-item>
   <ion-label stacked color="primary">Last Name</ion-label>
   <ion-input name="last_name" value="" formControlName="last_name" type="text" placeholder="Last name" required>
   </ion-input>
 </ion-item>
- <!-- <p ion-text color="danger" padding-left> Password is required	</p> -->
+<p *ngIf="!aForm.controls['first_name'].valid && aForm.controls['first_name'].touched" ion-text color="danger" padding-left>
+  Last Name is required </p>
   
       <ion-item>
         <ion-label stacked color="primary">Email Id</ion-label>
         <ion-input name="email" type="email" formControlName="email" placeholder="Email Id" value="" required>
         </ion-input>
       </ion-item>
-      <!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+  <p *ngIf="!aForm.controls['email'].valid && aForm.controls['email'].touched" ion-text color="danger" padding-left>
+   Email is required </p>
   
       <ion-item>
         <ion-label stacked color="primary">Address</ion-label>
 <ion-input name="address" type="text" formControlName="address" placeholder="Address" value="" required>
  </ion-input>
       </ion-item>
-      <!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+    <p *ngIf="!aForm.controls['address'].valid && aForm.controls['address'].touched" ion-text color="danger" padding-left>
+      Address is required </p>
   
 
 <ion-item>
@@ -51,14 +56,16 @@
   <ion-input name="city" type="text" placeholder="City" formControlName="city"  value="" required>
   </ion-input>
 </ion-item>
-<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+<p *ngIf="!aForm.controls['city'].valid && aForm.controls['city'].touched" ion-text color="danger" padding-left>
+  City is required </p>
 
 <ion-item>
   <ion-label stacked color="primary">State</ion-label>
   <ion-input name="state" type="text" placeholder="State" formControlName="state"  value="" required>
   </ion-input>
 </ion-item>
-<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+<p *ngIf="!aForm.controls['state'].valid && aForm.controls['state'].touched" ion-text color="danger" padding-left>
+  State is required </p>
 
 <ion-item>
   <ion-label stacked color="primary">Country</ion-label>
@@ -66,7 +73,8 @@
 
   </ion-input>
 </ion-item>
-<!-- <p ion-text color="danger" padding-left> Password is required </p> -->
+<p *ngIf="!aForm.controls['country'].valid && aForm.controls['country'].touched" ion-text color="danger" padding-left>
+  Country  is required </p>
 
 
 
@@ -89,7 +97,7 @@
       </ion-grid>
   
       <div padding class="no-p-t p-b-5">
-        <button ion-button class="sign-in-btn" (click)="onSubmit(loginForm)" type="submit" block>Save Changes</button>
+        <button ion-button class="sign-in-btn" (click)="onSubmit(aForm.value)" type="submit" block>Save Changes</button>
       </div>
   
   

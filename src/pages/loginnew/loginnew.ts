@@ -79,7 +79,7 @@ export class LoginnewPage {
             this.storage.set('fullName', res.userdetail.User['first_name']).then(() => {
               this.storage.set('fullName', res.userdetail.User['last_name']).then(() => {
                 this.storage.set('uid', res.userdetail.User['id']).then(() => {
-                this.navCtrl.push('HomePage');
+                this.navCtrl.setRoot('HomePage');
                 this.storage.get('uid').then(res=>{
                   console.log(res);
                 }).catch();
