@@ -1,3 +1,37 @@
 page-dealdetails {
 
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+    .toolbar-background{ background-color: #c94838;} 
+    .bar-button-default{ color: #ffffff; }   
+    .toolbar-title{ color: #ffffff; text-transform: uppercase; font-family: 'Poppins', sans-serif; font-weight: 300 !important;}    
+    .content{ background: #f6f6f6 !important; }
+
+    .deal-pro{ width: 100%; height: 150px; margin: 0 auto; overflow: hidden; position: relative;  }
+    .deal-pro img{ width: 100%; margin: 0 auto;}
+    .deal-pro h5{ color: #ffffff; font-size: 1.6rem;  width: 100%; background-color: #000; opacity: 0.8; filter: alpha(opacity=50); padding: 8px 16px 8px; margin-bottom: 0; font-family: 'Poppins', sans-serif; z-index: 100; font-weight: 300 !important; position: absolute; bottom: 0;}
+    .deal-span { color: #ffffff; font-size: 1.1rem; padding-top: 4px; float: right;}
+    .deal-span .icon{ color: #c94838; }
+    .clear{ clear: both;}
+    .item { border: none !important; margin-top: 1px;}
+    p {text-overflow: normal; white-space: normal; word-wrap: break-all;}
+    .item-inner{ border-bottom: none !important; }
+    .price{ font-weight: 600; color: #c94838; }
+    .price span{text-decoration: line-through; color: #979696; font-weight: 400; font-size: 1.2rem;}
+    .time{font-size: 1.2rem; padding-top: 10px;  }
+    .time .icon{ color: #000;}
+    .time-total{ background-color: #c64737; color: #ffffff; padding: 10px; text-align: center;}
+    .location-part{ margin: 1px auto; background-color: #ffffff; padding-top: 16px; }
+    .location-part h2{font-size: 1.6rem; color: #000; font-weight: 400; padding-left: 16px; }
+    .location-part img{ width: 100%; margin: 0 auto; }
+    .share{ background-color: #c84838; font-family: 'Poppins', sans-serif !important; font-weight: 300 !important; text-transform: inherit !important; }
+
+.no-p-l{ padding-left: 0; }
+.no-p-r{ padding-right: 0; }
+.no-p-t{ padding-top: 0 !important; }
+.no-p-b{ padding-bottom: 0 !important; }
+
+.no-m-l{ margin-left: 0; }
+.no-m-r{ margin-right: 0; }
+.no-m-t{ margin-top: 0 !important; }
+.no-m-b{ margin-bottom: 0 !important; }
 }

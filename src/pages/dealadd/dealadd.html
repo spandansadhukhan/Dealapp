@@ -53,32 +53,53 @@
   
       <ion-item>
         <ion-label stacked color="primary">Price</ion-label>
-        <ion-input name="email" type="email" placeholder="Price" required>
+        <ion-input name="email" type="text" placeholder="Price" required>
         </ion-input>
       </ion-item>
       
   
       <ion-item>
+          <ion-label stacked color="primary">Discount Price</ion-label>
+          <ion-input name="email" type="text" placeholder="Price" required>
+          </ion-input>
+        </ion-item>
+
+
+      <ion-item>
         <ion-label stacked color="primary">Discription</ion-label>
-        <ion-input name="" type="text" placeholder="" required>
-        </ion-input>
+        <ion-textarea name="" type="text" placeholder="" required>
+        </ion-textarea>
       </ion-item>
       <!-- <p ion-text color="danger" padding-left> Password is required </p> -->
   
-      
-      <ion-grid class="no-p-l no-p-r no-p-b">
-        <ion-row>
-          <ion-col col-12 class="no-p-l">
-            <ion-item>
-              <ion-label style="margin-right:0 !important;">Loyalty</ion-label>
-              <ion-checkbox color="dark" checked="true"></ion-checkbox>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-item>
+          <ion-label stacked color="primary">Start date</ion-label>
+          <ion-input name="email" type="date" placeholder="Price" required>
+          </ion-input>
+          <ion-input name="email" type="time" placeholder="Price" required>
+            </ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label stacked color="primary">End date</ion-label>
+            <ion-input name="email" type="date" placeholder="Price" required>
+            </ion-input>
+            <ion-input name="email" type="time" placeholder="Price" required>
+              </ion-input>
+          </ion-item>
+
+
+      <ion-item>
+          <p> Upload picture</p>
+          <button ion-button color="secondary" (click)="presentActionSheet()">Get Image</button>
+        </ion-item>
+        <ion-item>
+            <h4>Image Preview</h4>
+            <img src=""  alt="Ionic File" width="300" />
+          </ion-item>
   
       <div padding class="no-p-t p-b-5">
-        <button ion-button class="sign-in-btn" (click)="onLogin(addForm)" type="submit" block>Save</button>
+        <button ion-button class="sign-in-btn" type="submit" block>Save</button>
       </div>
   
   

@@ -6,25 +6,10 @@
 -->
 <ion-header>
     <ion-navbar>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col class="no-p-r">
-          <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-          </button>
-        </ion-col>
-        <ion-col col-9 class="no-p-l no-p-r">
-          <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="Search">
-          </ion-searchbar>
-        </ion-col>
-        <ion-col class="no-p-l" text-right>
-            <button ion-button class="trnsprnt-btn" icon-only (click)="presentFilter()">
-              <ion-icon name="md-more"></ion-icon>
-            </button>
-        </ion-col>
-      </ion-row>
-      
-    </ion-toolbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>My Deal List</ion-title>
     </ion-navbar>
   </ion-header>
   
@@ -32,7 +17,7 @@
   <ion-content>
     <ion-list>
 
-      <ion-item *ngFor="let d of deallist"  >
+      <ion-item *ngFor="let d of userdeallist"  >
         <ion-thumbnail item-start>
           <img src="{{d.deal_image}}">
         </ion-thumbnail>
@@ -40,10 +25,11 @@
         <p> <span class="price">Price:</span> 
           <span class="cross-text"> $ {{d.deal_price}} </span> 
           <span class="green-text"> $ {{d.deal_discount_price}}</span></p>
-        <button ion-button outline item-end (click)= "dealdetails(d.deal_id)">View Deal</button>
+        <button ion-button outline item-end (click)= "dealedit(d.deal_id)">Edit</button>
+        <button ion-button outline item-end (click)= "dealdelete(d.deal_id)">Delete</button>
       </ion-item>
   
-      <ion-item *ngIf="deallist== ''"  >
+      <ion-item *ngIf="userdeallist== ''"  >
         {{msg}}
       </ion-item>
       <!-- <ion-item>

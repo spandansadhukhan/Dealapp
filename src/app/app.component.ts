@@ -39,23 +39,21 @@ export class MyApp {
           }
 
 
-          public deallist(){
+          public userdeallist(){
             //alert('ok');
             //console.log(location);
             //if(location==0){
-              this.nav.setRoot('MyaccountPage');
+              this.nav.setRoot('UserdeallistPage');
               
            // }
             
               }
 
               public dealadd(){
-                //alert('ok');
-                //console.log(location);
-                //if(location==0){
+                
                   this.nav.setRoot('DealaddPage');
                   
-               // }
+              
                 
                   }
 
