@@ -67,7 +67,11 @@ export class DeallistPage {
     });
   }
 
- 
+  dealdetails(id){
+    //alert(id);
+    this.navCtrl.push('DealdetailsPage',{'id':id});
+    //localStorage.setItem('modeldata', JSON.stringify(name));
+  }
 
 
 }
