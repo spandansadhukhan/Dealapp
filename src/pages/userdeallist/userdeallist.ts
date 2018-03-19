@@ -109,4 +109,11 @@ export class UserdeallistPage {
   }
 
 
+  dealedit(id){
+    
+    this.navCtrl.push('DealeditPage',{'id':id});
+
+    }
+
+
 }
