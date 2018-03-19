@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Storage } from '@ionic/storage';
+import { Facebook } from '@ionic-native/facebook';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,8 @@ export class LoginnewPage {
   busy: boolean;
   isChecked: boolean;
   disabled: any;
+  isLoggedIn: boolean = false;
+  users: any;
   constructor(
     private builder: FormBuilder,
     public navCtrl: NavController,
@@ -33,13 +36,57 @@ export class LoginnewPage {
     public navParams: NavParams,
     public authService: AuthServiceProvider,
     private storage: Storage,
+    private fb: Facebook,
     public loadingCtrl: LoadingController) {
+
+    fb.getLoginStatus()
+      .then(res => {
+        console.log(res.status);
+        if (res.status === "connect") {
+          this.isLoggedIn = true;
+        } else {
+          this.isLoggedIn = false;
+        }
+      })
+      .catch(e => console.log(e));
 
 
     this.form = builder.group({
       'email': ['', Validators.compose([Validators.required, Validators.email])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
+  }
+
+  login() {
+    this.fb.login(['public_profile', 'user_friends', 'email'])
+      .then(res => {
+        alert('hello');
+        if (res.status === "connected") {
+          this.isLoggedIn = true;
+          this.getUserDetail(res.authResponse.userID);
+        } else {
+          this.isLoggedIn = false;
+        }
+      })
+      .catch(e => console.log('Error logging into Facebook', e));
+  }
+
+  logout() {
+    this.fb.logout()
+      .then(res => this.isLoggedIn = false)
+      .catch(e => console.log('Error logout from Facebook', e));
+  }
+
+  getUserDetail(userid) {
+    this.fb.api("/" + userid + "/?fields=id,email,name,picture,gender", ["public_profile"])
+      .then(res => {
+        console.log(res);
+         this.users = res;
+        this.navCtrl.setRoot('HomePage');
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
 

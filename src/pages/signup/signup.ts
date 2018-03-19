@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 
@@ -21,7 +21,7 @@ export class SignupPage {
     public navParams: NavParams,
     public authService: AuthServiceProvider,
     public alertCtrl: AlertController,
-    private fb: FormBuilder
+     private fb: FormBuilder
   ) {
     this.rForm = fb.group({
       'first_name': [null, Validators.required],

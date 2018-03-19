@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Headers, Http, Response, URLSearchParams, RequestOptions, RequestMethod, Request } from '@angular/http';
+import { Headers, Http, Response, RequestOptions, RequestMethod, Request } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController } from 'ionic-angular';

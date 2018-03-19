@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { UserProvider } from '../providers/user/user';
 import { IonicStorageModule } from '@ionic/storage';
+import { Facebook } from '@ionic-native/facebook';
 
 //import { HomePage } from '../pages/login/login';
 
@@ -30,6 +31,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     AuthServiceProvider,
     SplashScreen,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider
   ]
