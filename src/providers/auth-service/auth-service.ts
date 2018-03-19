@@ -59,7 +59,12 @@ export class AuthServiceProvider {
     });
   }
 
-  
+  dealadd(data:object):Observable<any>{
+    console.log(data);
+    return this.http.post(this.apiUrl +'products/add_api',data).map((res:Response)=>{
+      return res.json();
+    });
+  }
 
   
   getdetails(data: object): Observable<any> {
