@@ -26,7 +26,7 @@ export class MyApp {
     //alert('ok');
     //console.log(location);
     //if(location==0){
-      this.nav.setRoot('MyaccountPage');
+      this.nav.push('MyaccountPage');
       
    // }
     
@@ -36,14 +36,14 @@ export class MyApp {
     //alert('ok');
     //console.log(location);
     //if(location==0){
-      this.nav.setRoot('CouponlistPage');
+      this.nav.push('CouponlistPage');
       
    // }
     
       }
       public changepassword(){ 
         
-          this.nav.setRoot('ChangepasswordPage');
+          this.nav.push('ChangepasswordPage');
          
           }
 
@@ -56,7 +56,7 @@ export class MyApp {
             //alert('ok');
             //console.log(location);
             //if(location==0){
-              this.nav.setRoot('UserdeallistPage');
+              this.nav.push('UserdeallistPage');
               
            // }
             
@@ -64,7 +64,7 @@ export class MyApp {
 
               public dealadd(){
                 
-                  this.nav.setRoot('DealaddPage');
+                  this.nav.push('DealaddPage');
                   
               
                 
