@@ -66,7 +66,26 @@ export class AuthServiceProvider {
     });
   }
 
-  
+  getdealdetails(data: object): Observable<any> {
+    let requestoptions = new RequestOptions({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'products/getdealdetails_api',
+      body: JSON.stringify(data)
+    });
+    return this.http.request(new Request(requestoptions))
+      .map((res: Response) => {
+        if (res) {
+          return res.json();
+        }
+      });
+    
+  }
+  updatedeal(data: object): Observable<any> {
+    return this.http.post(this.apiUrl + 'products/editdeal_api', data).map((res: Response) => {
+      return res.json();
+    });
+  }
+
   getdetails(data: object): Observable<any> {
     let requestoptions = new RequestOptions({
       method: RequestMethod.Post,
