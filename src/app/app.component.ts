@@ -47,6 +47,10 @@ export class MyApp {
          
           }
 
+  public goToPage(page){
+    this.nav.setRoot(page);
+  }
+
 
           public userdeallist(){
             //alert('ok');

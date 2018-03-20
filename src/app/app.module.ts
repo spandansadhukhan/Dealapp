@@ -9,7 +9,8 @@ import { HttpModule } from '@angular/http';
 import { UserProvider } from '../providers/user/user';
 import { IonicStorageModule } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { CodescannerProvider } from '../providers/codescanner/codescanner';
 //import { HomePage } from '../pages/login/login';
 
 @NgModule({
@@ -33,7 +34,9 @@ import { Facebook } from '@ionic-native/facebook';
     SplashScreen,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    BarcodeScanner,
+    CodescannerProvider
   ]
 })
 export class AppModule {} 
