@@ -84,4 +84,13 @@
       }
     }
   }
-  
+
+  .side-bar-header{background: #17a2b8;padding:15px;
+    img{border-radius: 100%;width:50px;height:50px;border:2px solid #0e8699;}
+    .item-inner{border-bottom:0 !important}
+    h2{color:#fff;font-weight:400;font-size:20px;}
+    p{color:#fff;font-weight:400;font-size:13px;}
+    
+  }
+  .sidepanel-list{border:0;box-shadow: none;}
+  .sidepanel-list ion-item{border-bottom:1px solid #e1e1e1;color:#777777;text-transform: uppercase;font-size: 14px}

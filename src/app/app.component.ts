@@ -32,6 +32,15 @@ export class MyApp {
     
       }
 
+ public couponlist(){
+    //alert('ok');
+    //console.log(location);
+    //if(location==0){
+      this.nav.setRoot('CouponlistPage');
+      
+   // }
+    
+      }
       public changepassword(){ 
         
           this.nav.setRoot('ChangepasswordPage');

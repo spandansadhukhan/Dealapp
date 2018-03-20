@@ -1,44 +1,38 @@
 page-couponlist {
+    
     @import url('https://fonts.googleapis.com/css?family=Poppins');
 
-    .toolbar-background{ background-color: #c94838;}
-    .bar-button-default{ color: #ffffff; }
-    .toolbar-title{ color: #ffffff; text-transform: uppercase; font-family: 'Poppins', sans-serif;  font-weight: 300 !important; }
-    .toolbar-background{ border-width: 0 !important;}
-    .searchbar-input{ background-color: #ffffff !important; line-height: 2rem !important; box-shadow: none !important; }
-    .trnsprnt-btn{ background-color: transparent; box-shadow: none; height: auto !important; padding: 0 !important; align-items: center !important; justify-content: center !important; height: 26px !important; }
-    .searchbar { min-height: auto; padding: 0;}
-    .searchbar .searchbar-search-icon{ top: 7px !important; }
-    .content { background-color: #f6f6f6; }
-    // .item ion-thumbnail{ min-width: 60px !important; min-height: 60px !important; }
-    // .item ion-thumbnail img{ width: 60px !important; height: 60px !important; }
-    .item h2{text-overflow: normal; white-space: normal; word-wrap: break-all; font-size: 1.4rem !important; font-family: 'Poppins', sans-serif;  font-weight:500 !important; }
-    .item p{text-overflow: normal; white-space: normal; word-wrap: break-all; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif;  font-weight:400 !important;}
-    .price{ color: #222222; }
-    .cross-text{ color: #222222; text-decoration: line-through; }
-    .green-text{ color: #179702; }
-    .item .item-button{ font-size: 1rem !important; border: 1px solid #179702; color: #ffffff; background-color: #179702; font-family: 'Poppins', sans-serif !important; text-transform: uppercase !important; font-family: 'Poppins', sans-serif !important; }
-    .item{ border-bottom: 1px solid #e4e4e4 !important; }
-    .item-inner{ border-bottom: none !important; }
-    .item [item-start]{margin-right: 8px !important;}
-    .box-area{ border-radius: 3px; border: 1px solid #e1e1e1; width: 50px; height: 50px; align-items: center; justify-content: center; padding: 10px; display: flex;
-     flex-wrap: wrap;  }
-    .box-area p{ text-transform: uppercase; }
-    .box-area h1{ margin-bottom: 0; font-size: 1.6rem; font-weight: 600;}
-    .red-bg{ background-color: #c94838; font-size: 0.9rem; color: #ffffff; text-transform: uppercase; padding: 1px 3px; font-family: 'Poppins', sans-serif;}
-    .gray-text{ color: #bcbbbb; font-size: 1rem; font-family: 'Poppins', sans-serif; }
-    .item p{font-size: 1rem !important; font-family: 'Poppins', sans-serif;}
-    .item h2{font-size: 1.3rem !important; font-family: 'Poppins', sans-serif; font-weight: 400 !important; }
-    .promo{text-overflow: normal; white-space: normal; word-wrap: break-all; font-family: 'Poppins', sans-serif;}
-    .label{ margin-right: 0 !important; font-family: 'Poppins', sans-serif; }
-    
-    .no-p-l{ padding-left: 0; }
-    .no-p-r{ padding-right: 0; }
-    .no-p-t{ padding-top: 0 !important; }
-    .no-p-b{ padding-bottom: 0 !important; }
-    
-    .no-m-l{ margin-left: 0; }
-    .no-m-r{ margin-right: 0; }
-    .no-m-t{ margin-top: 0 !important; }
-    .no-m-b{ margin-bottom: 0 !important; }
+.toolbar-background{ background-color: #c94838;}
+.bar-button-default{ color: #ffffff; }
+.toolbar-title{ color: #ffffff; text-transform: uppercase; font-family: 'Poppins', sans-serif;  font-weight: 300 !important; }
+.toolbar-background{ border-width: 0 !important;}
+.searchbar-input{ background-color: #ffffff !important; line-height: 2rem !important; box-shadow: none !important; }
+.trnsprnt-btn{ background-color: transparent; box-shadow: none; height: auto !important; padding: 0 !important; align-items: center !important; justify-content: center !important; height: 26px !important; }
+.searchbar { min-height: auto; padding: 0;}
+.searchbar .searchbar-search-icon{ top: 7px !important; }
+.content { background-color: #f6f6f6; }
+
+.item h2{margin-bottom:10px;color:#000;text-overflow: normal; white-space: normal; word-wrap: break-all; font-size: 16px !important; font-family: 'Poppins', sans-serif;  font-weight:400; }
+.item p{text-overflow: normal; white-space: normal; word-wrap: break-all; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif;  font-weight:400;margin:5px 0}
+.date{ color: #3d3d3d; }
+.price{ color: #c94838;font-size:14px}
+
+.button-edit,.button-delete{background: none;color: #179702;font-size: 19px;padding: 2px 9px;border-radius: 2px;border:1px solid #179702}
+.button-delete{color: #c94838;border:1px solid #c94838}
+
+
+.item .item-button{ font-size: 1rem !important; border: 1px solid #c94838; color: #c94838; background-color: #ffffff; font-family: 'Poppins', sans-serif !important; text-transform: uppercase !important; font-family: 'Poppins', sans-serif !important; }
+.item{ border-bottom: 1px solid #e4e4e4 !important; }
+.item-inner{ border-bottom: none !important; }
+.no-p-l{ padding-left: 0; }
+.no-p-r{ padding-right: 0; }
+.no-p-t{ padding-top: 0 !important; }
+.no-p-b{ padding-bottom: 0 !important; }
+
+.no-m-l{ margin-left: 0; }
+.no-m-r{ margin-right: 0; }
+.no-m-t{ margin-top: 0 !important; }
+.no-m-b{ margin-bottom: 0 !important; }
+
+.inactive{background: #dedddd}
 }
