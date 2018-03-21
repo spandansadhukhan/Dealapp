@@ -7,12 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>codescanner</ion-title>
+    <ion-title>Coupon Scanner</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<button ion-button class="sign-in-btn" (click)="startScanner()" type="submit" block>Scan Coupon</button>
 
+<button ion-button class="sign-in-btn" (click)="paypalPayment()" type="submit" block>Pay via Paypal</button>
 </ion-content>
