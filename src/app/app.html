@@ -16,17 +16,21 @@
      
       <ion-content>
         <ion-card class="sidepanel-list">
-          <ion-item>
-            <ion-icon name="person" item-start></ion-icon> My Dashboard
+          <ion-item (click)="myaccount()">
+            <ion-icon name="person" item-start ></ion-icon> My Dashboard
           </ion-item>
-          <ion-item>
+          <ion-item (click)="changepassword()">
             <ion-icon name="unlock" item-start></ion-icon> Change Password
           </ion-item> 
           <ion-item (click)="goToPage('CodescannerPage')">
             <ion-icon name="pricetag" item-start></ion-icon> Add coupons
           </ion-item> 
-          <ion-item (click)="couponlist()">
-            <ion-icon name="pricetag" item-start></ion-icon> Coupons list
+          <ion-item (click)="dealadd()">
+            <ion-icon name="pricetag" item-start></ion-icon> Add Deal
+
+          </ion-item> 
+          <ion-item (click)="userdeallist()">
+            <ion-icon name="pricetag" item-start></ion-icon> Deal list
           </ion-item>         
         </ion-card>
       </ion-content>
