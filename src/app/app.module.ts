@@ -12,6 +12,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { CodescannerProvider } from '../providers/codescanner/codescanner';
 //import { HomePage } from '../pages/login/login';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CodescannerProvider } from '../providers/codescanner/codescanner';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     BarcodeScanner,
-    CodescannerProvider
+    CodescannerProvider,
+    PayPal
   ]
 })
 export class AppModule {} 
