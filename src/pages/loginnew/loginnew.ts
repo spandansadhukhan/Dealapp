@@ -5,6 +5,8 @@ import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup } from
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Storage } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook';
+import { MenuController } from 'ionic-angular';
+import {MyApp} from '../../app/app.component';
 
 @IonicPage()
 @Component({
@@ -13,7 +15,7 @@ import { Facebook } from '@ionic-native/facebook';
 })
 export class LoginnewPage {
 
-
+public loguser:any;
   public form: FormGroup;
   public email: AbstractControl;
   public password: AbstractControl;
@@ -34,10 +36,12 @@ export class LoginnewPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public navParams: NavParams,
+    public menu: MenuController,
     public authService: AuthServiceProvider,
     private storage: Storage,
     private fb: Facebook,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    private myApp:MyApp) {
 
     fb.getLoginStatus()
       .then(res => {
@@ -92,7 +96,11 @@ export class LoginnewPage {
 
 
   ionViewDidLoad() {
+  
+    this.menu.enable(false, 'loggedOutMenu');
     console.log('ionViewDidLoad LoginnewPage');
+
+  //  console.log("ABCDEFGHIJ", localStorage.getItem('userData'));
   }
 
 
@@ -129,11 +137,17 @@ export class LoginnewPage {
       });
       alert.present();*/
         this.storage.ready().then(() => {
-          this.storage.set('userType', res.userdetail.User['type']).then(() => {
+          localStorage.setItem('userData', JSON.stringify(res.userdetail.User));
+           console.log("USERDATATATATATTATATTATA", JSON.stringify(res.userdetail.User));
+      //  this.storage.set('userType', res.userdetail.User['type']).then(() => {
             this.storage.set('first_Name', res.userdetail.User['first_name']).then(() => {
               this.storage.set('last_Name', res.userdetail.User['last_name']).then(() => {
                 this.storage.set('uid', res.userdetail.User['id']).then(() => {
+
                   this.navCtrl.setRoot('HomePage');
+                 
+
+                 
                 // this.storage.get('uid').then((res)=>{
                   
                 //   console.log(res);
@@ -142,7 +156,7 @@ export class LoginnewPage {
               });
             });
             });
-          });
+        // });
         });
       
     }else{

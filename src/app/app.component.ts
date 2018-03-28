@@ -12,16 +12,20 @@ export class MyApp {
 
   rootPage:any;
   public id:any;
-  public type:any;
-  
+ public loguser:any;
+ //public type:any;
+  public istype:any;
 
   public path:any;
   constructor(platform: Platform,
     private storage: Storage, statusBar: StatusBar, 
     splashScreen: SplashScreen) {
-    //platform.ready().then(() => {
 
-      
+      platform.ready().then(()=>{
+       
+       
+
+    //platform.ready().then(() => {
       //location.reload();
       //this.path= window.location.href;
       //alert(this.path);
@@ -29,9 +33,17 @@ export class MyApp {
       this.storage.get('uid').then(val => {
         this.id =val;
     //alert(val);
-      this.storage.get('userType').then(res => {
-      this.type =res;
-      alert(this.type);
+   // this.loguser=localStorage.getItem("userData");
+   //  console.log("USERINFOOOOOO22222",this.loguser.type);
+    // this.storage.get('userType').then(res => {
+    //  this.type =res;
+    //  console.log("USERINFOOOOOO",this.type);
+    //   if(this.type=="V"){
+    //     this.istype=0;
+    //   }else if(this.type=="C"){
+    //     this.istype=1;
+    //   }
+    
             if(this.id!=""){
 
           //alert(this.id);
@@ -47,18 +59,39 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-    });
+  // });
   });
+
+
+
+})
   }
 
   public logout(){
     this.storage.ready().then(() => {
+      const data=localStorage.getItem("userData");
+localStorage.removeItem('userData');
+localStorage.setItem('userData',"");
     this.storage.set("uid","");
+
    this.nav.setRoot('LoginnewPage');
   });
 }
 
+abc(){
+ // alert("jdh")
+  this.loguser =  JSON.parse(localStorage.getItem('userData'));   
+  if(this.loguser){
+    
+    console.log("USERINFOOOOO",this.loguser.type);
+  if(this.loguser.type=="V"){
+    this.istype=0;
+  }else if(this.loguser.type=="C"){
+    this.istype=1;
+  }
+  }
 
+}
 
   
   public myaccount(){

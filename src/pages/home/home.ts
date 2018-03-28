@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { MenuController } from 'ionic-angular';
+import {MyApp} from '../../app/app.component';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the HomePage page.
  *
@@ -19,17 +22,29 @@ export class HomePage {
  responseData : any;
  public popularcategorylist:any;
  public categorylist:any;
-
+public loguser:any;
+public type:any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public authService:AuthServiceProvider,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,  public menu: MenuController, public myApp:MyApp,private storage: Storage) {
   }
 
   ionViewDidLoad() {
+  
+     this.loguser = JSON.parse(localStorage.getItem('userData'));
+     this.myApp.abc();
+  //   if(this.loguser){
+  //   console.log("USERINFOOOOOO22222",this.loguser.type);
+  //  this.myApp.loguser.type=this.loguser.type;
+  //  console.log("APPPPCOMPNNTTYPE",this.myApp.loguser.type);
+  //   console.log("USERDATATATATATTATATTATA",this.loguser);
+  //   }
+    this.menu.enable(true, 'loggedOutMenu');
     console.log('ionViewDidLoad HomePage');
     this.popularcategory();
     this.category();
+   
   }
 
 
