@@ -62,6 +62,9 @@ export class ChangepasswordPage {
     });
   }
 
+  abc(){
+    
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangepasswordPage');
