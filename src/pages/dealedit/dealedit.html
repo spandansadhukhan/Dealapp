@@ -87,9 +87,12 @@
       
       <ion-item>
         <p class="upload-text">Deal Image</p>
-        <button ion-button block class="upload-image" color="light">Upload Image</button>
+        <button ion-button block class="upload-image" color="light" (click)="presentActionSheet()">Upload Image</button>
       </ion-item>
-
+      <ion-item *ngIf="pathForImage(lastImage)!= ''">
+        <h4>Image Preview</h4>
+        <img src="{{pathForImage(lastImage)}}"  alt="Ionic File" width="300" />
+      </ion-item>
       <ion-item>
       <ion-label stacked color="primary">Description</ion-label>
         <ion-textarea rows="5" maxLength="500" formControlName="description"></ion-textarea>

@@ -123,20 +123,22 @@ export class LoginnewPage {
     this.authService.login(formData).subscribe(res => {
       console.log(res);
       if(res.ack==1){
-      const alert = this.alertCtrl.create({
+      /*const alert = this.alertCtrl.create({
         title: res.msg,
         buttons: ['OK']
       });
-      alert.present();
+      alert.present();*/
         this.storage.ready().then(() => {
-          this.storage.set('userType', res['type']).then(() => {
-            this.storage.set('fullName', res.userdetail.User['first_name']).then(() => {
-              this.storage.set('fullName', res.userdetail.User['last_name']).then(() => {
+          this.storage.set('userType', res.userdetail.User['type']).then(() => {
+            this.storage.set('first_Name', res.userdetail.User['first_name']).then(() => {
+              this.storage.set('last_Name', res.userdetail.User['last_name']).then(() => {
                 this.storage.set('uid', res.userdetail.User['id']).then(() => {
-                this.navCtrl.setRoot('HomePage');
-                this.storage.get('uid').then(res=>{
-                  console.log(res);
-                }).catch();
+                  this.navCtrl.setRoot('HomePage');
+                // this.storage.get('uid').then((res)=>{
+                  
+                //   console.log(res);
+                // }).catch();
+                
               });
             });
             });

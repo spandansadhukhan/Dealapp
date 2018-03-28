@@ -70,6 +70,17 @@ export class CouponlistPage {
     let modal = this.modalCtrl.create("ModalContentPage");
     modal.present();
   }
+
+
+purchase(coupon_id,coupon_type){
+
+  this.navCtrl.push('CouponpurchasePage',{'coupon_id':coupon_id,'coupon_type':coupon_type});
+
+}
+
+
+
+
 }
 
 
