@@ -22,34 +22,37 @@
           <ion-item menuClose (click)="changepassword()">
             <ion-icon name="unlock" item-start></ion-icon> Change Password
           </ion-item> 
-          <ion-item menuClose (click)="goToPage('CodescannerPage')">
+          <ion-item  *ngIf="istype==0" menuClose (click)="goToPage('CodescannerPage')">
             <ion-icon name="pricetag" item-start></ion-icon> Loyalty add
           </ion-item> 
-          <ion-item menuClose (click)="dealadd()">
+          <ion-item  *ngIf="istype==0" menuClose (click)="dealadd()">
             <ion-icon name="pricetag" item-start></ion-icon> Add Deal
 
           </ion-item> 
-          <ion-item menuClose (click)="userdeallist()">
+          <ion-item  *ngIf="istype==0" menuClose (click)="userdeallist()">
             <ion-icon name="pricetag" item-start></ion-icon> Deal list
           </ion-item> 
           
-          <ion-item menuClose (click)="couponadd()">
+          <ion-item  *ngIf="istype==0" menuClose (click)="couponadd()">
               <ion-icon name="pricetag" item-start></ion-icon> Add Coupon
   
             </ion-item> 
-            <ion-item menuClose (click)="usercouponlist()">
+            <ion-item  *ngIf="istype==0" menuClose (click)="usercouponlist()">
               <ion-icon name="pricetag" item-start></ion-icon> Coupon list
             </ion-item>
 
 
 
 
-          <ion-item menuClose (click)="orderlist()">
+          <ion-item  *ngIf="istype==0" menuClose (click)="orderlist()">
             <ion-icon name="pricetag" item-start></ion-icon> Order list
           </ion-item> 
 
-          <ion-item menuClose (click)="wallet()">
+          <ion-item  *ngIf="istype==0" menuClose (click)="wallet()">
             <ion-icon name="pricetag" item-start></ion-icon> My Wallet
+          </ion-item> 
+          <ion-item  *ngIf="istype==1" menuClose (click)="wallet()">
+            <ion-icon name="pricetag" item-start></ion-icon> Purchase History
           </ion-item> 
 
           <ion-item menuClose (click)="logout()">
