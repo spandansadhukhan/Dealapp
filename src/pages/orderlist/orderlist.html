@@ -1,0 +1,35 @@
+<!--
+  Generated template for the CouponlistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Order List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+
+    <ion-item *ngFor="let ol of orderlist"> 
+      <h2>{{ol.buyer_name}}</h2>     
+      <h2>{{ol.coupon_name}}</h2>
+      <p><ion-icon name="calendar"></ion-icon> <span class="date">{{ol.buy_date}} </span></p>
+      <p><ion-icon name="pricetag"></ion-icon><span class="price"> {{ol.coupon_price}} </span></p>
+
+      <button item-end class="button-edit"><ion-icon name="create"></ion-icon></button>
+      
+    </ion-item>
+    
+    
+    
+    
+  </ion-list>
+
+</ion-content>

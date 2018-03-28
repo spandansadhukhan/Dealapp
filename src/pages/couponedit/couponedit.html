@@ -9,33 +9,22 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Add New Deal</ion-title>
+    <ion-title>Edit Coupon</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
 
-
-  <!-- <ion-item>
-    <p> Upload picture</p>
-    <button ion-button color="secondary" (click)="presentActionSheet()">Get Image</button>
-  </ion-item> -->
-  <!-- <ion-item>
-      <h4>Image Preview</h4>
-      <img src="{{pathForImage(lastImage)}}"  alt="Ionic File" width="300" />
-    </ion-item> -->
-
-
-  <form [formGroup]="rForm" novalidate>
+  <form [formGroup]="eForm" novalidate>
     <ion-list no-lines>
       <ion-item>
-        <ion-label stacked color="primary">Deal Name</ion-label>
-        <ion-input name="name" placeholder="Deal Name Here" type="text" formControlName="name" required>
+        <ion-label stacked color="primary">Coupon Name</ion-label>
+        <ion-input name="name" placeholder="Coupon Name Here" type="text" formControlName="name" required>
         </ion-input>
       </ion-item>
-      <p *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched" ion-text color="danger" padding-left>
-          Deal Name is required </p>
+      <p *ngIf="!eForm.controls['name'].valid && eForm.controls['name'].touched" ion-text color="danger" padding-left>
+          Coupon Name is required </p>
       
   
       <ion-item>
@@ -47,7 +36,7 @@
         </ion-select>
         
       </ion-item>
-      <p *ngIf="!rForm.controls['shop_id'].valid && rForm.controls['shop_id'].touched" ion-text color="danger" padding-left>
+      <p *ngIf="!eForm.controls['shop_id'].valid && eForm.controls['shop_id'].touched" ion-text color="danger" padding-left>
         Please  select shop  </p>
       <!-- <p ion-text color="danger" padding-left> Password is required	</p> -->
   
@@ -59,7 +48,7 @@
           
         </ion-select>
       </ion-item>
-      <p *ngIf="!rForm.controls['category_id'].valid && rForm.controls['category_id'].touched" ion-text color="danger" padding-left>
+      <p *ngIf="!eForm.controls['category_id'].valid && eForm.controls['category_id'].touched" ion-text color="danger" padding-left>
           Please  select category  </p>
       <!-- <p ion-text color="danger" padding-left> Password is required </p> -->
   
@@ -71,72 +60,73 @@
           
         </ion-select>
       </ion-item>
-      <p *ngIf="!rForm.controls['city_id'].valid && rForm.controls['city_id'].touched" ion-text color="danger" padding-left>
+      <p *ngIf="!eForm.controls['city_id'].valid && eForm.controls['city_id'].touched" ion-text color="danger" padding-left>
           Please  select city  </p>
       <!-- <p ion-text color="danger" padding-left> Password is required </p> -->
   
       <ion-item>
-        <ion-label stacked color="primary" >Price</ion-label>
-        <ion-input name="deal price" placeholder="Deal Price Here" type="text" formControlName="price_lot">
+        <ion-label stacked color="primary" >Coupon Price</ion-label>
+        <ion-input name="deal price" placeholder="Coupon Price Here" type="text" formControlName="amount">
         </ion-input>
       </ion-item>
-      <p *ngIf="!rForm.controls['price_lot'].valid && rForm.controls['price_lot'].touched" ion-text color="danger" padding-left>
+      <p *ngIf="!eForm.controls['amount'].valid && eForm.controls['amount'].touched" ion-text color="danger" padding-left>
           Please  enter price  </p>
       <!-- <p ion-text color="danger" padding-left>	Password is required </p> -->
   
       <ion-item>
-        <ion-label stacked color="primary">Discount Price</ion-label>
-        <ion-input name="discount price" placeholder="Discount Price Here" formControlName="discount" type="text" required>
+        <ion-label stacked color="primary">Coupon Offer</ion-label>
+        <ion-input name="Coupon Offer" placeholder="offer % Here" formControlName="offer" type="text" required>
         </ion-input>
       </ion-item>
-      <p *ngIf="!rForm.controls['discount'].valid && rForm.controls['discount'].touched" ion-text color="danger" padding-left>
-          Please  enter discount price  </p>
+      <p *ngIf="!eForm.controls['offer'].valid && eForm.controls['offer'].touched" ion-text color="danger" padding-left>
+          Please  enter offer  </p>
       <!-- <p ion-text color="danger" padding-left> Password is required	</p> -->
       
       <ion-item>
-        <p class="upload-text">Deal Image</p>
-        <button ion-button block class="upload-image" color="light" (click)="presentActionSheet()">Upload Image</button>
+        <ion-label stacked color="primary">Coupon No</ion-label>
+        <ion-input name="Coupon Offer" placeholder="Coupon no Here" formControlName="coupon_no" type="number" required>
+        </ion-input>
       </ion-item>
-      <ion-item *ngIf="pathForImage(lastImage)!= ''">
-        <h4>Image Preview</h4>
-        <img src="{{pathForImage(lastImage)}}"  alt="Ionic File" width="300" />
-      </ion-item>
+      <p *ngIf="!eForm.controls['coupon_no'].valid && eForm.controls['coupon_no'].touched" ion-text color="danger" padding-left>
+          Please  enter coupon no  </p>
+
       <ion-item>
       <ion-label stacked color="primary">Description</ion-label>
         <ion-textarea rows="5" maxLength="500" formControlName="description"></ion-textarea>
       </ion-item>
-      <p *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched" ion-text color="danger" padding-left>
+      <p *ngIf="!eForm.controls['description'].valid && eForm.controls['description'].touched" ion-text color="danger" padding-left>
           Please  enter description  </p>
       <ion-item>
         <ion-label stacked color="primary">Start Date</ion-label>
-        <ion-input name="date"  type="date" formControlName="start_date" required>
-        </ion-input>
-        <ion-input name="time"  type="time" formControlName="start_time" required>
+        <ion-input name="date"  type="date" formControlName="from_date" required>
         </ion-input>
       </ion-item>
+      <p *ngIf="!eForm.controls['from_date'].valid && eForm.controls['from_date'].touched" ion-text color="danger" padding-left>
+        Please  enter start date  </p>
       <!-- <p ion-text color="danger" padding-left>	Password is required </p> -->
   
       <ion-item>
         <ion-label stacked color="primary">Expiry Date</ion-label>
-        <ion-input name="date"  type="date" formControlName="end_date" required>
-        </ion-input>
-        <ion-input name="date"  type="time" formControlName="end_time" required>
+        <ion-input name="date"  type="date" formControlName="to_date" required>
         </ion-input>
       </ion-item>
+      <p *ngIf="!eForm.controls['to_date'].valid && eForm.controls['to_date'].touched" ion-text color="danger" padding-left>
+        Please  enter expiry date  </p>
       <!-- <p ion-text color="danger" padding-left>	Password is required </p> -->
 
       <ion-item>
-        <ion-label stacked color="primary">Status</ion-label>
-        <ion-select formControlName="status">
+        <ion-label stacked color="primary">Type</ion-label>
+        <ion-select formControlName="type">
           <ion-option selected="true" >Select</ion-option>
-          <ion-option value="A">Active</ion-option>
-          <ion-option value="P">Pending</ion-option>
-          <ion-option value="I">Inactive</ion-option>
+          <ion-option value="O">Online use</ion-option>
+          <ion-option value="S">Store use</ion-option>
+          
         </ion-select>
       </ion-item>
-  
+      <p *ngIf="!eForm.controls['type'].valid && eForm.controls['type'].touched" ion-text color="danger" padding-left>
+        Please  select type  </p>
       <ion-item>
-        <button ion-button class="sign-in-btn" (click)="onSubmit(rForm.value)" type="submit" block>Save Deal</button>
+        <button ion-button class="sign-in-btn" (click)="onSubmit(eForm.value)" type="submit" block>Save coupon</button>
       </ion-item>
       
   

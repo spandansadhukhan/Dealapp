@@ -1,0 +1,40 @@
+page-usercouponlist {
+
+
+
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+    .toolbar-background{ background-color: #c94838;}
+    .bar-button-default{ color: #ffffff; }
+    .toolbar-title{ color: #ffffff; text-transform: uppercase; font-family: 'Poppins', sans-serif;  font-weight: 300 !important; }
+    .toolbar-background{ border-width: 0 !important;}
+    .searchbar-input{ background-color: #ffffff !important; line-height: 2rem !important; box-shadow: none !important; }
+    .trnsprnt-btn{ background-color: transparent; box-shadow: none; height: auto !important; padding: 0 !important; align-items: center !important; justify-content: center !important; height: 26px !important; }
+    .searchbar { min-height: auto; padding: 0;}
+    .searchbar .searchbar-search-icon{ top: 7px !important; }
+    .content { background-color: #f6f6f6; }
+    
+    .item h2{margin-bottom:10px;color:#000;text-overflow: normal; white-space: normal; word-wrap: break-all; font-size: 16px !important; font-family: 'Poppins', sans-serif;  font-weight:400; }
+    .item p{text-overflow: normal; white-space: normal; word-wrap: break-all; font-size: 1.2rem !important; font-family: 'Poppins', sans-serif;  font-weight:400;margin:5px 0}
+    .date{ color: #3d3d3d; }
+    .price{ color: #c94838;font-size:14px}
+    
+    .button-edit,.button-delete{background: none;color: #179702;font-size: 19px;padding: 2px 9px;border-radius: 2px;border:1px solid #179702}
+    .button-delete{color: #c94838;border:1px solid #c94838}
+    
+    
+    .item .item-button{ font-size: 1rem !important; border: 1px solid #c94838; color: #c94838; background-color: #ffffff; font-family: 'Poppins', sans-serif !important; text-transform: uppercase !important; font-family: 'Poppins', sans-serif !important; }
+    .item{ border-bottom: 1px solid #e4e4e4 !important; }
+    .item-inner{ border-bottom: none !important; }
+    .no-p-l{ padding-left: 0; }
+    .no-p-r{ padding-right: 0; }
+    .no-p-t{ padding-top: 0 !important; }
+    .no-p-b{ padding-bottom: 0 !important; }
+    
+    .no-m-l{ margin-left: 0; }
+    .no-m-r{ margin-right: 0; }
+    .no-m-t{ margin-top: 0 !important; }
+    .no-m-b{ margin-bottom: 0 !important; }
+    
+    .inactive{background: #dedddd}
+}

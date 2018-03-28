@@ -1,0 +1,37 @@
+page-couponedit {
+
+
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
+    .toolbar-background{ background-color: #c94838;} 
+    .bar-button-default{ color: #ffffff; }   
+    .toolbar-title{ color: #ffffff; text-transform: uppercase; font-family: 'Poppins', sans-serif; font-weight: 300 !important;}    
+    .content{ background: #f6f6f6 !important; }
+
+    .label { color: #222222 !important; font-family: 'Poppins', sans-serif;  font-size: 1.3rem !important; font-weight: 400;}
+    .item { background-color: transparent;}
+    ion-input { border: 1px solid #d5d5d5; background-color: #ffffff; font-family: 'Poppins', sans-serif;  font-size: 1.1rem;  padding-left: 15px;  font-weight: 300; color: #5e5e5e;}
+    .select{ border: 1px solid #d5d5d5; background-color: #ffffff; font-family: 'Poppins', sans-serif;  font-size: 1.2rem;  padding-left: 15px;  font-weight: 300; color: #5e5e5e; }
+    .select-text{ padding-left: 15px;}
+    .upload-image{ background-color: #e3e3e3 !important; color: #818181; box-shadow: none; padding: 6px; height: 34px !important; }
+    .upload-text{ font-size: 1.3rem !important; font-weight: 400; font-family: 'Poppins', sans-serif; color: #222222 !important; margin-bottom: 0 !important; }
+    .item-input ion-textarea{ border: 1px solid #d5d5d5; background-color: #ffffff; font-family: 'Poppins', sans-serif;  font-size: 1.1rem;   font-weight: 300; color: #5e5e5e; }
+    .sign-in-btn{ background: #c94838; height: 38px !important; border-radius: 2px; font-family: 'Poppins', sans-serif; text-transform: inherit; font-weight: 400 !important; font-size: 1.5rem !important; background: -moz-linear-gradient(top, #c94838 0%, #c94838 50%, #b84031 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #c94838 0%,#b84031 50%,#b84031 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #c94838 0%,#b84031 50%,#b84031 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */ }
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #c4c4c4 !important; font-family: 'Poppins', sans-serif !important; font-weight: 300 !important;
+}
+::-moz-placeholder { /* Firefox 19+ */ 
+  color: #c4c4c4 !important; font-family: 'Poppins', sans-serif !important; font-weight: 300 !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #c4c4c4 !important; font-family: 'Poppins', sans-serif !important; font-weight: 300 !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #c4c4c4 !important; font-family: 'Poppins', sans-serif !important; font-weight: 300 !important;
+}
+
+}

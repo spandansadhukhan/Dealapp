@@ -14,6 +14,11 @@ import { CodescannerProvider } from '../providers/codescanner/codescanner';
 //import { HomePage } from '../pages/login/login';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
+import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +43,11 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     UserProvider,
     BarcodeScanner,
     CodescannerProvider,
-    PayPal
+    PayPal,
+    Camera,
+    FileTransfer,
+    FilePath,
+    File
   ]
 })
 export class AppModule {} 

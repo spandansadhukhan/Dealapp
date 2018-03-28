@@ -5,48 +5,40 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col class="no-p-r">
-            <button ion-button menuToggle>
-                <ion-icon name="menu"></ion-icon>
-              </button>
-        </ion-col>
-        <ion-col col-9 class="no-p-l no-p-r">
-          <ion-searchbar color="primary" [(ngModel)]="queryText" (ionInput)="updateSchedule()" placeholder="Search">
-          </ion-searchbar>
-        </ion-col>
-        <ion-col class="no-p-l" text-right>
-          <button ion-button class="trnsprnt-btn" icon-only (click)="presentFilter()">
-            <ion-icon name="md-more"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-  
-    </ion-toolbar>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Purchase Details</ion-title>
+  </ion-navbar>
+</ion-header>
   
   
   <ion-content>
     <ion-list>
   
-      <ion-item *ngFor="let cp of couponlist" >
+      <ion-item *ngIf="coupontype=='S'">
         <div class="box-area" text-center item-start>
-          <h1>{{cp.coupon_offer}}%</h1>
+          <h1>5%</h1>
           <p>Off</p>
         </div>
         <p class="promo"> <span class="red-bg">Promo Code</span> <span class="gray-text"> 17,581 used today </span></p>
-        <h2>{{cp.coupon_name}}</h2>
-        <p> {{cp.coupon_description}}</p>
-        <button ion-button outline item-end (click)="purchase(cp.coupon_id,cp.coupon_type)"> get coupon code</button>
+        <h2>{{couponname}}</h2>
+        <p> {{couponprice}}</p>
+        <button ion-button outline item-end *ngIf="couponno== 0">Sold Out</button>
+        <button ion-button outline item-end *ngIf="couponno > 0" (click)="changepassword()">Redeem now</button>
       </ion-item>
       
-      <ion-item *ngIf="couponlist== ''" >
-        
-        {{msg}}
-       
+      <ion-item *ngIf="coupontype=='O'">
+        <div class="box-area" text-center item-start>
+          <h1>5%</h1>
+          <p>Off</p>
+        </div>
+        <p class="promo"> <span class="red-bg">Promo Code</span> <span class="gray-text"> 17,581 used today </span></p>
+        <h2>{{couponname}}</h2>
+        <p> {{couponprice}}</p>
+        <button ion-button outline item-end *ngIf="couponno > 0"> Pay now</button>
+        <button ion-button outline item-end *ngIf="couponno== 0"> Sold Out</button>
       </ion-item>
 
 
