@@ -59,6 +59,13 @@ export class AuthServiceProvider {
     });
   }
 
+  facebookadd(data:object):Observable<any>{
+    console.log(data);
+    return this.http.post(this.apiUrl +'users/fblogin_api',data).map((res:Response)=>{
+      return res.json();
+    });
+  }
+
   dealadd(data:object):Observable<any>{
     console.log(data);
     return this.http.post(this.apiUrl +'products/add_api',data).map((res:Response)=>{

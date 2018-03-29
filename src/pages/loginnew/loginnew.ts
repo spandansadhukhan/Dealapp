@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController,ToastController } from 'ionic-angular';
 import { FormControl, AbstractControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Storage } from '@ionic/storage';
@@ -22,7 +22,7 @@ public loguser:any;
   public device_type: AbstractControl;
   public device_token_id: AbstractControl;
 
-
+  public getresult:any;
   myform: FormGroup;
   responseData: any;
   error: string;
@@ -41,58 +41,30 @@ public loguser:any;
     private storage: Storage,
     private fb: Facebook,
     public loadingCtrl: LoadingController,
+    public toastCtrl:ToastController,
     private myApp:MyApp) {
 
-    fb.getLoginStatus()
-      .then(res => {
-        console.log(res.status);
-        if (res.status === "connect") {
-          this.isLoggedIn = true;
-        } else {
-          this.isLoggedIn = false;
-        }
-      })
-      .catch(e => console.log(e));
+   
 
 
     this.form = builder.group({
       'email': ['', Validators.compose([Validators.required, Validators.email])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
-  }
 
-  login() {
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-      .then(res => {
-        alert('hello');
-        if (res.status === "connected") {
-          this.isLoggedIn = true;
-          this.getUserDetail(res.authResponse.userID);
-        } else {
-          this.isLoggedIn = false;
-        }
-      })
-      .catch(e => console.log('Error logging into Facebook', e));
-  }
+    fb.getLoginStatus()
+    .then(res => {
+      console.log(res.status);
+      if(res.status === "connect") {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    })
+    .catch(e => console.log(e));
 
-  logout() {
-    this.fb.logout()
-      .then(res => this.isLoggedIn = false)
-      .catch(e => console.log('Error logout from Facebook', e));
-  }
 
-  getUserDetail(userid) {
-    this.fb.api("/" + userid + "/?fields=id,email,name,picture,gender", ["public_profile"])
-      .then(res => {
-        console.log(res);
-         this.users = res;
-        this.navCtrl.setRoot('HomePage');
-      })
-      .catch(e => {
-        console.log(e);
-      });
   }
-
 
 
   ionViewDidLoad() {
@@ -120,7 +92,59 @@ public loguser:any;
   }
 
   
+  facebookSignIn() {
+    this.fb.login(['public_profile', 'user_friends', 'email'])
+      .then(res => {
+        if(res.status === "connected") {
+          this.isLoggedIn = true;
+          this.getUserDetail(res.authResponse.userID);
+        } else {
+          this.isLoggedIn = false;
+        }
+      })
+      .catch(e => console.log('Error logging into Facebook', e));
+  }
 
+  getUserDetail(userid) {
+    this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
+      .then(res => {
+        console.log("FBDATA",res);
+        this.users = res;
+        let stringToSplit = this.users.name;
+         let x = stringToSplit.split(" ");
+console.log(x[0]);
+       
+     let param={
+      "facebook_id": this.users.id,
+      "email":this.users.email,
+      //"gender": this.users.gender,
+      "first_name":x[0],
+       "last_name":x[1]
+     };
+     console.log("DATATATTATATAT",param);
+       
+        this.authService.facebookadd(param).subscribe((res) => { //console.log(result);
+         this.getresult = res;
+         console.log("FBRESULT",res);
+         if(res.ACK== 1)
+         {
+          localStorage.setItem('userData',JSON.stringify(res.userdetail.User));
+          this.navCtrl.setRoot('HomePage');
+   
+         }
+         else{
+          
+           this.tost_message('No Profile Found')
+         }
+          
+       })
+
+      })
+      .catch(e => {
+        this.tost_message('No Profile Found')
+        console.log(e);
+      });
+  }
 
 
   loginNow(formData) { 
@@ -175,5 +199,13 @@ public loguser:any;
   onSignup() {
     this.navCtrl.push('SignupPage');
   }
+
+  tost_message(msg){
+    let toast = this.toastCtrl.create({
+     message: msg,
+     duration: 3000
+   });
+   toast.present(); 
+    }
 
 }
