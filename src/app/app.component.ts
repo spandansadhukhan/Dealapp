@@ -44,7 +44,7 @@ export class MyApp {
     //     this.istype=1;
     //   }
     
-            if(this.id!=""){
+            if(this.id){
 
           //alert(this.id);
           //this.rootPage = 'HomePage';
