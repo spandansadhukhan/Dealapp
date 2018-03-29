@@ -70,6 +70,7 @@ export class MywalletPage {
 
 
   oncash(formData) {
+    
     console.log(this.rForm.valid);
     if (!this.rForm.valid) {
       const alert = this.alertCtrl.create({
@@ -79,13 +80,19 @@ export class MywalletPage {
       });
       alert.present();
     }else{
+      let loading = this.loadingCtrl.create({
+        content: 'Loading Please Wait...',
+        duration: 3000
+      });
+      loading.present();
     //  console.log(formData);
     this.storage.get('uid').then(val => {
       formData['user_id']=val;
      this.authService.offlinesubscription(formData).subscribe(res=>{
       
        if(res.ACK==1){
-        console.log(res);
+        loading.dismiss();
+        //console.log(res);
          const alert = this.alertCtrl.create({
            title: res.msg,
            buttons: ['OK']
@@ -94,7 +101,8 @@ export class MywalletPage {
 
        //this.navCtrl.setRoot('UserdeallistPage');
        }else{
-        console.log(res);
+        loading.dismiss();
+       // console.log(res);
         const alert = this.alertCtrl.create({
           title: res.msg,
           buttons: ['OK']
