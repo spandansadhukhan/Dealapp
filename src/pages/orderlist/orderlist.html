@@ -23,7 +23,7 @@
       <p><ion-icon name="calendar"></ion-icon> <span class="date">{{ol.buy_date}} </span></p>
       <p><ion-icon name="pricetag"></ion-icon><span class="price"> {{ol.coupon_price}} </span></p>
 
-      <button item-end class="button-edit"><ion-icon name="create"></ion-icon></button>
+      <button ion-button outline item-end (click)= "view(ol.shop_id)">View</button>
       
     </ion-item>
     
