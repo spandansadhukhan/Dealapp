@@ -7,7 +7,8 @@ import { Storage } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook';
 import { MenuController } from 'ionic-angular';
 import {MyApp} from '../../app/app.component';
-
+import { GooglePlus } from '@ionic-native/google-plus';
+import { Events } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-loginnew',
@@ -42,9 +43,11 @@ public loguser:any;
     private fb: Facebook,
     public loadingCtrl: LoadingController,
     public toastCtrl:ToastController,
-    private myApp:MyApp) {
+    private myApp:MyApp,
+    private googlePlus: GooglePlus,
+    public events: Events) {
 
-   
+      events.publish('hideFooter', { isHidden: true});
 
 
     this.form = builder.group({
@@ -68,12 +71,16 @@ public loguser:any;
 
 
   ionViewDidLoad() {
-  
+    
     this.menu.enable(false, 'loggedOutMenu');
     console.log('ionViewDidLoad LoginnewPage');
 
   //  console.log("ABCDEFGHIJ", localStorage.getItem('userData'));
   }
+
+  ionViewWillLeave() {
+    this.events.publish('hideFooter', { isHidden: false});
+}
 
 
 
@@ -129,7 +136,11 @@ console.log(x[0]);
          if(res.ACK== 1)
          {
           localStorage.setItem('userData',JSON.stringify(res.userdetail.User));
-          this.navCtrl.setRoot('HomePage');
+          this.storage.set('uid', res.userdetail.User['id']).then(() => {
+                 
+            this.navCtrl.setRoot('HomePage');  
+        });
+        
    
          }
          else{
@@ -144,6 +155,18 @@ console.log(x[0]);
         this.tost_message('No Profile Found')
         console.log(e);
       });
+  }
+
+  googleplus() {
+    this.googlePlus.login({
+
+    })
+      .then(res => {
+        console.log("GOOGLEPLUSDATA",res);
+        this.email = res.email;
+        this.isLoggedIn = true;
+      })
+      .catch(err => console.error(err));
   }
 
 
@@ -167,7 +190,7 @@ console.log(x[0]);
             this.storage.set('first_Name', res.userdetail.User['first_name']).then(() => {
               this.storage.set('last_Name', res.userdetail.User['last_name']).then(() => {
                 this.storage.set('uid', res.userdetail.User['id']).then(() => {
-
+                 
                   this.navCtrl.setRoot('HomePage');
                  
 
