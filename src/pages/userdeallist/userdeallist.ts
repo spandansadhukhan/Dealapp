@@ -23,7 +23,8 @@ export class UserdeallistPage {
   public msg:any;
   public id:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
   public authService:AuthServiceProvider,private storage: Storage,public alertCtrl: AlertController,) {
   }
 

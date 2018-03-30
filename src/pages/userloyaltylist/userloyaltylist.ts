@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angul
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Storage } from '@ionic/storage';
 /**
- * Generated class for the UsershoplistPage page.
+ * Generated class for the UserloyaltylistPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,34 +11,30 @@ import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
-  selector: 'page-usershoplist',
-  templateUrl: 'usershoplist.html',
+  selector: 'page-userloyaltylist',
+  templateUrl: 'userloyaltylist.html',
 })
-export class UsershoplistPage {
-
+export class UserloyaltylistPage {
   public response:any;
   responseData : any;
-  public usershoplist:any;
-  //public delete_shop: any;
+  public userloyaltylist:any;
   public msg:any;
   public id:any;
-
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public authService:AuthServiceProvider,
     private storage: Storage,
-    public alertCtrl: AlertController,) {
-    
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UsershoplistPage');
-    this.usershops();
+    console.log('ionViewDidLoad UserloyaltylistPage');
+    this.userloyalties();
   }
 
 
-  usershops(){
+  userloyalties(){
     
     this.storage.get('uid').then(val => {
       
@@ -49,19 +45,19 @@ export class UsershoplistPage {
       "user_id":this.id,
      };
      console.log(serval);
-    this.authService.postData(serval,'shops/shop_list_api').then((result) => {
+    this.authService.postData(serval,'loyalties/userwise_loyalty_list_api').then((result) => {
       this.responseData = result
  // console.log("CHATRESULTTTT",result);
       if( this.responseData.ACK == 1)
       {
        
-        this.usershoplist =  this.responseData.Shop; 
+        this.userloyaltylist =  this.responseData.Loyalty; 
         
         //console.log('ccc',this.userdeallist);
       }
       else
       {
-        this.usershoplist = '';
+        this.userloyaltylist = '';
         this.msg =this.responseData.msg; 
       }
      
@@ -75,13 +71,13 @@ export class UsershoplistPage {
 
 
 
-  shopdelete(id){
+  loyaltydelete(id){
     // alert('ok');
       let serval={
         "id": id,
        };
        //console.log(serval);
-      this.authService.postData(serval,'shops/shop_delete_api').then((result) => {
+      this.authService.postData(serval,'loyalties/loyalty_delete_api').then((result) => {
         this.response = result
    // console.log("CHATRESULTTTT",result);
         if( this.response.ACK == 1)
@@ -92,7 +88,7 @@ export class UsershoplistPage {
             buttons: ['OK']
           });
           alert.present();
-          this.navCtrl.setRoot('UsershoplistPage');
+          this.navCtrl.setRoot('UserloyaltylistPage');
         }
         else
         {
@@ -101,7 +97,7 @@ export class UsershoplistPage {
             buttons: ['OK']
           });
           alert.present();
-          this.navCtrl.setRoot('UsershoplistPage');
+          this.navCtrl.setRoot('UserloyaltylistPage');
         }
        
       }, (err) => {
@@ -111,12 +107,14 @@ export class UsershoplistPage {
   
    
     }
-
-
-    shopedit(id){
-    
-      this.navCtrl.push('ShopeditPage',{'id':id});
+  
+  
+    loyaltyedit(id){
+      
+      this.navCtrl.push('LoyaltyeditPage',{'id':id});
   
       }
+
+
 
 }
