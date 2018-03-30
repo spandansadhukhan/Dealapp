@@ -130,7 +130,20 @@ public changepassword(){
   }
 
 
-public userdeallist(){
+public usershoplist(){
+ 
+    this.nav.push('UsershoplistPage');
+   
+    }
+
+public shopadd(){
+  
+    this.nav.push('ShopaddPage');
+    
+  }
+
+
+  public userdeallist(){
  
     this.nav.push('UserdeallistPage');
    
@@ -153,6 +166,8 @@ public dealadd(){
     this.nav.push('DealaddPage');
     
   }
+
+
 
 
 
@@ -179,7 +194,11 @@ public couponadd(){
     this.nav.push('MywalletPage');
     
   }
-
+  public packagesubscribed(){
+  
+    this.nav.push('PackagesubscribedPage');
+    
+  }
 
 
   userdetails(){

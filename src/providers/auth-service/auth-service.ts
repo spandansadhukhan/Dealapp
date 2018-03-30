@@ -74,6 +74,17 @@ export class AuthServiceProvider {
   }
 
 
+  shopadd(data:object):Observable<any>{
+    console.log(data);
+    return this.http.post(this.apiUrl +'shops/add_api',data).map((res:Response)=>{
+      return res.json();
+    });
+  }
+
+
+
+
+
   couponadd(data:object):Observable<any>{
     console.log(data);
     return this.http.post(this.apiUrl +'coupons/add_api',data).map((res:Response)=>{
