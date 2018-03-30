@@ -65,9 +65,9 @@ export class CouponlistPage {
   }
 
 
-  openModal() {
+  openModal(coupon_id,coupon_type) {
 
-    let modal = this.modalCtrl.create("ModalContentPage");
+    let modal = this.modalCtrl.create("ModalContentPage",{'coupon_id':coupon_id,'coupon_type':coupon_type});
     modal.present();
   }
 
