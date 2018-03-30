@@ -40,7 +40,8 @@
         <p class="promo"> <span class="red-bg">Promo Code</span> <span class="gray-text"> 17,581 used today </span></p>
         <h2>{{cp.coupon_name}}</h2>
         <p> {{cp.coupon_description}}</p>
-        <button ion-button outline item-end (click)="openModal()"> get coupon code</button>
+        <button ion-button outline item-end *ngIf="cp.coupon_no > 0" (click)="openModal(cp.coupon_id,cp.coupon_type)"> get coupon code</button>
+        <button ion-button outline item-end *ngIf="cp.coupon_no== 0"> Sold Out</button>
       </ion-item>
       
       <ion-item *ngIf="couponlist== ''" >

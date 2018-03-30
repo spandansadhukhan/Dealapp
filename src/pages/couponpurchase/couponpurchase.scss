@@ -44,4 +44,19 @@ page-couponpurchase {
     .no-m-t{ margin-top: 0 !important; }
     .no-m-b{ margin-bottom: 0 !important; }
 
+    .card-header{color:#c94838; border-bottom: 1px solid #e1e1e1; padding-top:11px; padding-bottom:11px}
+    .coupon-card .row{border-bottom:1px solid #e1e1e1}
+    .coupon-card .row:last-child{border-bottom:0; }
+    .coupon-card .grid{padding:0}
+    .coupon-card [col-5]{padding-left:0}
+    .coupon-card p{color:#777}
+
+    .booking-card .row{border-bottom:1px solid #e1e1e1}
+    .booking-card .row:last-child{border-bottom:0; }
+    .booking-card .grid{padding:0}
+    .booking-card .col{padding-left:0; padding-right:0}
+    .booking-card h6{color:#000; font-size:1.2rem}
+    .booking-card p{color:#777}
+    .booking-card .button{margin-left:0; margin-right:0}
+
 }

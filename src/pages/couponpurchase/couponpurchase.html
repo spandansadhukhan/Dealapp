@@ -15,6 +15,72 @@
   
   
   <ion-content>
+    <ion-card>
+      <ion-card-header>Coupon Details</ion-card-header>
+      <ion-card-content class="coupon-card">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-5><h6>Coupon Name:</h6></ion-col>
+            <ion-col col-7><p>Coupon Name here</p></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-5>
+              <h6>Price:</h6>
+            </ion-col>
+            <ion-col col-7>
+              <p>$5.00</p></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-5>
+              <h6>Offer:</h6>
+            </ion-col>
+            <ion-col col-7>
+              <p>5% Discount</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>Booking Person Details</ion-card-header>
+      <ion-card-content class="booking-card">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-12>
+              <h6>First Name:</h6>
+              <p>Rozer</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <h6>Last Name:</h6>
+              <p>Smith</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <h6>Email:</h6>
+              <p>rozer@natitsolved.com</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <h6>Mobile:</h6>
+              <p>9831635919</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <button type="button" ion-button block>Save</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+
+
     <ion-list>
   
       <ion-item *ngIf="coupontype=='S'">
