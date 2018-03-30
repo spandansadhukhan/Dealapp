@@ -175,6 +175,21 @@ public couponadd(){
   }
 
 
+  public loyaltyadd(){
+  
+    this.nav.push('LoyaltyaddPage');
+    
+  }
+
+  public userloyaltylist(){
+  
+    this.nav.push('UserloyaltylistPage');
+    
+  }
+
+
+
+
   userdetails(){
 
     this.storage.get('uid').then(val => {

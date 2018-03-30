@@ -81,7 +81,12 @@ export class AuthServiceProvider {
     });
   }
 
-
+  loyaltyadd(data:object):Observable<any>{
+    console.log(data);
+    return this.http.post(this.apiUrl +'loyalties/add_api',data).map((res:Response)=>{
+      return res.json();
+    });
+  }
 
 
 
@@ -100,6 +105,29 @@ export class AuthServiceProvider {
       return res.json();
     });
   }
+
+
+
+  getloyaltydetails(data: object): Observable<any> {
+    let requestoptions = new RequestOptions({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'loyalties/getloyaltydetails_api',
+      body: JSON.stringify(data)
+    });
+    return this.http.request(new Request(requestoptions))
+      .map((res: Response) => {
+        if (res) {
+          return res.json();
+        }
+      });
+    
+  }
+  updateloyalty(data: object): Observable<any> {
+    return this.http.post(this.apiUrl + 'loyalties/editloyalty_api', data).map((res: Response) => {
+      return res.json();
+    });
+  }
+
 
 
 
@@ -122,6 +150,30 @@ export class AuthServiceProvider {
       return res.json();
     });
   }
+
+
+  getshopdetails(data: object): Observable<any> {
+    let requestoptions = new RequestOptions({
+      method: RequestMethod.Post,
+      url: this.apiUrl + 'shops/getshopdetails_api',
+      body: JSON.stringify(data)
+    });
+    return this.http.request(new Request(requestoptions))
+      .map((res: Response) => {
+        if (res) {
+          return res.json();
+        }
+      });
+    
+  }
+  updateshop(data: object): Observable<any> {
+    return this.http.post(this.apiUrl + 'shops/edit_api', data).map((res: Response) => {
+      return res.json();
+    });
+  }
+
+
+
 
 
 

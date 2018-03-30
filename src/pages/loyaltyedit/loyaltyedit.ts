@@ -8,7 +8,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
 /**
- * Generated class for the ShopeditPage page.
+ * Generated class for the LoyaltyeditPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -16,10 +16,11 @@ import { File } from '@ionic-native/file';
 declare var cordova: any;
 @IonicPage()
 @Component({
-  selector: 'page-shopedit',
-  templateUrl: 'shopedit.html',
+  selector: 'page-loyaltyedit',
+  templateUrl: 'loyaltyedit.html',
 })
-export class ShopeditPage {
+export class LoyaltyeditPage {
+
   eForm : FormGroup;
   public response:any;
    responseData : any;
@@ -28,8 +29,10 @@ export class ShopeditPage {
    loading: Loading;
   imageURI:any;
   imageFileName:any; 
+ 
  public id:any;
- public shop_id:any;
+ public loyalty_id:any;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
@@ -45,42 +48,46 @@ export class ShopeditPage {
    private filePath: FilePath,
    private camera: Camera) {
 
-
     this.eForm = builder.group({
       'name': [null, Validators.required],
+      'loyalty_no': [null, Validators.required],
       'description': [null, Validators.required],
-      'status': [null, Validators.required],
+      'start_date': [null, Validators.required],
+      'end_date': [null, Validators.required],
+      
       
     });
     this.id = this.navParams.get('id');
     //val = this.id;
-    //alert(this.id);
-    this.authService.getshopdetails({ shop_id: this.id }).subscribe(res => {
+    this.authService.getloyaltydetails({ loyalty_id: this.id }).subscribe(res => {
+     
+      //this.eForm.controls['id'].setValue(res.dealInfo.Product.id);
+      this.eForm.controls['name'].setValue(res.loyaltyInfo.Loyalty.name);
+      this.eForm.controls['loyalty_no'].setValue(res.loyaltyInfo.Loyalty.loyalty_no);
+      this.eForm.controls['description'].setValue(res.loyaltyInfo.Loyalty.description);
+      this.eForm.controls['start_date'].setValue(res.loyaltyInfo.Loyalty.start_date);;
+      this.eForm.controls['end_date'].setValue(res.loyaltyInfo.Loyalty.end_date);;
       
-      this.eForm.controls['name'].setValue(res.shopInfo.Shop.name);
-      
-      this.eForm.controls['description'].setValue(res.shopInfo.Shop.description);
-      
-      this.eForm.controls['status'].setValue(res.shopInfo.Shop.is_active);
     });
+
+
 
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ShopeditPage');
-    this.shop_id = this.navParams.get('id');
+    console.log('ionViewDidLoad LoyaltyeditPage');
+    this.loyalty_id = this.navParams.get('id');
   }
-
 
   onSubmit(formData) {
     console.log(this.eForm.valid);
      //alert(this.deal_id);
-        formData['shop_id'] = this.shop_id;
+        formData['loyalty_id'] = this.loyalty_id;
        // console.log(formData);
-      this.authService.updateshop(formData).subscribe(res => {
+      this.authService.updateloyalty(formData).subscribe(res => {
         //console.log(formData);
-        this.uploadImage(this.shop_id);
+        this.uploadImage(this.loyalty_id);
         if (res.ACK==1) {
           console.log(res);
           const alert = this.alertCtrl.create({
@@ -88,7 +95,7 @@ export class ShopeditPage {
             buttons: ['OK']
           });
           alert.present();
-          this.navCtrl.setRoot('UsershoplistPage');
+          this.navCtrl.setRoot('UserloyaltylistPage');
         }else{
           const alert = this.alertCtrl.create({
             title: res.msg,
@@ -204,7 +211,7 @@ export class ShopeditPage {
 
   public uploadImage(id) {
     // Destination URL
-    var url = "http://111.93.169.90/team6/deal/shops/insertimage_api";
+    var url = "http://111.93.169.90/team6/deal/loyalties/insertimage_api";
    
     // File for Upload
     var targetPath = this.pathForImage(this.lastImage);
@@ -219,17 +226,17 @@ export class ShopeditPage {
       mimeType: "multipart/form-data",
       params : {
       'photo':filename,
-      'shop_id':id
+      'loyalty_id':id
        }
      // params : {'fileName': filename}
     };
     console.log("OPTIONS",options);
     const fileTransfer:FileTransferObject = this.transfer.create();
    
-    //this.loading = this.loadingCtrl.create({
-    //  content: 'Uploading...',
-   // });
-   // this.loading.present();
+    // this.loading = this.loadingCtrl.create({
+    //   content: 'Uploading...',
+    // });
+    // this.loading.present();
    
     // Use the FileTransfer to upload the image
     fileTransfer.upload(targetPath, url, options).then(data => {
@@ -239,10 +246,15 @@ export class ShopeditPage {
       //this.navCtrl.push('HomePage');
     }, err => {
       console.log("Error",err);
-      //this.loading.dismissAll()
+     // this.loading.dismissAll()
       this.presentToast('Error while uploading file.');
     });
   }
+
+
+
+
+
 
 
 

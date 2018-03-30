@@ -20,6 +20,11 @@ export class MywalletPage {
   
  responseData : any;
  public packagelist:any;
+ public id:any;
+ public deal_no:any;
+ public coupon_no:any;
+ public walletdetail:any;
+ public package_id:any;
  rForm: FormGroup;
 
   constructor(public navCtrl: NavController,
@@ -41,7 +46,48 @@ export class MywalletPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MywalletPage');
     this.packages();
+    this.wallets();
+
   }
+
+
+  wallets(){
+    
+    this.storage.get('uid').then(val => {
+      
+      //console.log(val);
+      this.id = val;
+     
+    let serval={
+      "user_id":this.id,
+     };
+     console.log(serval);
+    this.authService.postData(serval,'packages/wallet_details_api').then((result) => {
+      this.responseData = result
+ // console.log("CHATRESULTTTT",result);
+      if( this.responseData.ACK == 1)
+      {
+       
+        this.walletdetail=this.responseData.wallet;
+        this.deal_no =  this.responseData.wallet.User.total_deal; 
+        this.coupon_no =  this.responseData.wallet.User.total_coupon; 
+        //console.log('ccc',this.userdeallist);
+      }
+      else
+      {
+        this.walletdetail = '';
+        //this.msg =this.responseData.msg; 
+      }
+     
+    }, (err) => {
+      console.log(err);
+      // Error log
+    });
+
+  });
+  }
+
+
 
 
 
@@ -70,9 +116,8 @@ export class MywalletPage {
 
 
   oncash(formData) {
-    
-    console.log(this.rForm.valid);
-    if (!this.rForm.valid) {
+    //console.log(this.rForm.valid);
+    if (!this.package_id) {
       const alert = this.alertCtrl.create({
         title: 'Subscription Failed!',
         subTitle: "Please select one package.",
@@ -80,19 +125,14 @@ export class MywalletPage {
       });
       alert.present();
     }else{
-      let loading = this.loadingCtrl.create({
-        content: 'Loading Please Wait...',
-        duration: 3000
-      });
-      loading.present();
+      formData.package_id = this.package_id;
     //  console.log(formData);
     this.storage.get('uid').then(val => {
       formData['user_id']=val;
      this.authService.offlinesubscription(formData).subscribe(res=>{
       
        if(res.ACK==1){
-        loading.dismiss();
-        //console.log(res);
+        console.log(res);
          const alert = this.alertCtrl.create({
            title: res.msg,
            buttons: ['OK']
@@ -101,8 +141,7 @@ export class MywalletPage {
 
        //this.navCtrl.setRoot('UserdeallistPage');
        }else{
-        loading.dismiss();
-       // console.log(res);
+        console.log(res);
         const alert = this.alertCtrl.create({
           title: res.msg,
           buttons: ['OK']
@@ -122,7 +161,10 @@ export class MywalletPage {
   }
 
 
-
+  mcqAnswer(id)
+  {
+    this.package_id = id;
+  }
 
 
 

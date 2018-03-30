@@ -22,9 +22,9 @@
           <ion-item menuClose (click)="changepassword()">
             <ion-icon name="unlock" item-start></ion-icon> Change Password
           </ion-item> 
-          <ion-item  *ngIf="istype==0" menuClose (click)="goToPage('CodescannerPage')">
+          <!-- <ion-item  *ngIf="istype==0" menuClose (click)="goToPage('CodescannerPage')">
             <ion-icon name="pricetag" item-start></ion-icon> Loyalty add
-          </ion-item> 
+          </ion-item>  -->
 
           <ion-item  *ngIf="istype==0" menuClose (click)="shopadd()">
             <ion-icon name="pricetag" item-start></ion-icon> Add Shop
@@ -34,6 +34,13 @@
             <ion-icon name="pricetag" item-start></ion-icon> Shop list
           </ion-item>
 
+          <ion-item  *ngIf="istype==0" menuClose (click)="loyaltyadd()">
+            <ion-icon name="pricetag" item-start></ion-icon> Add Loyalty
+          </ion-item>
+
+          <ion-item  *ngIf="istype==0" menuClose (click)="userloyaltylist()">
+            <ion-icon name="pricetag" item-start></ion-icon> Loyalty list
+          </ion-item>
 
           <ion-item  *ngIf="istype==0" menuClose (click)="dealadd()">
             <ion-icon name="pricetag" item-start></ion-icon> Add Deal
