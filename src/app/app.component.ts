@@ -3,27 +3,32 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-
+import { Events } from 'ionic-angular';
+import { Facebook } from '@ionic-native/facebook';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  public footerIsHidden: boolean = false;
   rootPage:any;
   public id:any;
  public loguser:any;
  //public type:any;
   public istype:any;
-
+  public firstname:any;
+  public lastname:any;
   public path:any;
   constructor(platform: Platform,
-    private storage: Storage, statusBar: StatusBar, 
+    private storage: Storage, statusBar: StatusBar,public events: Events,private fb: Facebook, 
     splashScreen: SplashScreen) {
 
       platform.ready().then(()=>{
        
-       
+        events.subscribe('hideFooter', (data) => {
+          this.footerIsHidden = data.isHidden;
+        })
 
     //platform.ready().then(() => {
       //location.reload();
@@ -46,11 +51,16 @@ export class MyApp {
     
             if(this.id){
 
+             
+
           //alert(this.id);
           //this.rootPage = 'HomePage';
           //location.reload();
           this.nav.setRoot('HomePage');
         }else{
+         
+          events.publish('hideFooter', { isHidden: true});
+        
           //location.reload();
           this.rootPage = 'LoginnewPage';
         }
@@ -65,6 +75,8 @@ export class MyApp {
 
 
 })
+
+
   }
 
   public logout(){
@@ -73,7 +85,7 @@ export class MyApp {
 localStorage.removeItem('userData');
 localStorage.setItem('userData',"");
     this.storage.set("uid","");
-
+    this.fb.logout();
    this.nav.setRoot('LoginnewPage');
   });
 }
@@ -82,6 +94,8 @@ abc(){
  // alert("jdh")
   this.loguser =  JSON.parse(localStorage.getItem('userData'));   
   if(this.loguser){
+    this.firstname=this.loguser.first_name;
+    this.lastname=this.loguser.last_name;
     
     console.log("USERINFOOOOO",this.loguser.type);
   if(this.loguser.type=="V"){
@@ -133,6 +147,18 @@ public shopadd(){
  
     this.nav.push('UserdeallistPage');
    
+    }
+
+    gocategory(){
+      this.nav.push('CategorylistPage');
+    }
+
+    godeal(){
+      this.nav.push('DealmenuPage');
+    }
+
+    gohome(){
+      this.nav.setRoot('HomePage');
     }
 
 public dealadd(){

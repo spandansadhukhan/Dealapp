@@ -9,12 +9,12 @@
           <ion-thumbnail item-start>
             <img src="https://cap.stanford.edu/profiles/viewImage?profileId=19141&type=square&ts=1509532892453">
           </ion-thumbnail>
-          <h2>Spandan</h2>
+          <h2>{{firstname}} {{lastname}}</h2>
           <p><ion-icon name="pin"></ion-icon> California CA, USA</p>
         </ion-item>
       </ion-header>
      
-      <ion-content >
+      <ion-content>
         <ion-card class="sidepanel-list">
           <ion-item menuClose (click)="myaccount()">
             <ion-icon name="person" item-start ></ion-icon> My Dashboard
@@ -83,6 +83,41 @@
   
     <!-- main navigation -->
     <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main name="app"></ion-nav>
-  
+   
+    
   </ion-split-pane>
+  <ion-footer *ngIf="!footerIsHidden" class="footer">
+    <ion-toolbar style=" padding: 0;">
+      <ion-grid style=" padding: 0;">
+        <ion-row class="row-bottom">
+          <ion-col text-center >
+              <a (click)="gohome()">
+                  <ion-icon name="home"></ion-icon>
+                  <p class="titl">Home</p>
+              </a>
+          </ion-col>
+          <ion-col text-center>
+            <a (click)="godeal()">
+              <ion-icon name="pricetags" ></ion-icon>
+              <p class="titl">Deals</p>
+            </a>
+          </ion-col>
+          <ion-col text-center>
+            <a (click)="gocategory()" >
+              <ion-icon name="ios-list-box-outline"></ion-icon>
+              <p class="titl">Coupons</p>
+            </a>
+          </ion-col>
+        
+          <ion-col text-center col-5>
+            <a >
+              <ion-icon name="ios-person-outline"></ion-icon>
+              <p class="titl">Loyality Program</p>
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
   
+  
+  </ion-footer>

@@ -18,7 +18,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { File } from '@ionic-native/file';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-
+import { GooglePlus } from '@ionic-native/google-plus';
 @NgModule({
   declarations: [
     MyApp,
@@ -39,6 +39,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
     AuthServiceProvider,
     SplashScreen,
     Facebook,
+    GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     BarcodeScanner,
