@@ -59,7 +59,7 @@ export class MyApp {
           this.nav.setRoot('HomePage');
         }else{
          
-          events.publish('hideFooter', { isHidden: true});
+          events.publish('hideFooter', {isHidden: true});
         
           //location.reload();
           this.rootPage = 'LoginnewPage';
@@ -211,6 +211,10 @@ public couponadd(){
   
     this.nav.push('UserloyaltylistPage');
     
+  }
+
+  loyality(){
+    this.nav.push('LoyalitylistPage');
   }
 
 

@@ -18,16 +18,39 @@ export class DealmenuPage {
   public categoryresult:any;
   public storeresult:any;
   public storeres:any;
+  public locationres:any;
+  public locationresult:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public authService:AuthServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DealmenuPage');
-    this.categorylist();
-    this.storelist();
+    this.category();
+    this.store();
+    this.location();
   }
 
-  categorylist(){
+  location(){
+    this.authService.getData('users/location_list_api').then((result) => {
+      this.locationres = result
+  console.log("RESULTTTTTTTTTTTTTTTTTT",result);
+      if(this.locationres.ACK == 1)
+      {
+        this.locationresult =  this.locationres.Location;
+        console.log('Location',this.locationresult);
+      }
+      else
+      {
+        this.locationresult = '';
+      }
+      
+    }, (err) => {
+      console.log(err);
+      // Error log
+    });
+  }
+
+  category(){
     this.authService.getData('users/category_list_api').then((result) => {
       this.response = result
   console.log("RESULTTTTTTTTTTTTTTTTTT",result);
@@ -49,14 +72,14 @@ export class DealmenuPage {
 
 
 
-  storelist(){
+  store(){
     this.authService.getData('users/shop_list_api').then((result) => {
-      this.storeres = result
+      this.storeres = result;
   console.log("RESULTTTTTTTTTTTTTTTTTT",result);
-      if(this.response.ACK == 1)
+      if(this.storeres.ACK==1)
       {
         this.storeresult =  this.storeres.Shop;
-        console.log('PPPPPPP',this.storeresult);
+        console.log('Storeeee',this.storeresult);
       }
       else
       {
@@ -67,6 +90,10 @@ export class DealmenuPage {
       console.log(err);
       // Error log
     });
+  }
+
+  golocation(type,id){
+    this.navCtrl.push('DeallistPage',{'type':type,'id':id});
   }
 
   deallist(type,id){

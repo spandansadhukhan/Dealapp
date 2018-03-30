@@ -1,0 +1,88 @@
+<!--
+  Generated template for the SearchListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Loyality List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+
+    <ion-item *ngFor="let s of loyalityresult"  >
+      <ion-thumbnail item-start>
+        <img src="{{s.loyality_image}}">
+      </ion-thumbnail>
+      <h2>{{s.loyality_name}}</h2>
+      <p>  
+        <span class="green-text"> {{s.loyality_description}}</span></p>
+      <button ion-button outline item-end (click)= "loyalitydetails(s.loyality_id)">View</button>
+
+    </ion-item>
+
+    <ion-item *ngIf="loyalityresult== ''"  >
+      {{msg}}
+    </ion-item>
+    <!-- <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/search-img-a.png">
+      </ion-thumbnail>
+      <h2>Deal Name Goes Here</h2>
+      <p>
+        <span class="price">Price:</span>
+        <span class="cross-text"> $ 500.00 </span>
+        <span class="green-text"> $ 200.02</span>
+      </p>
+      <button ion-button outline item-end>View Deal</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/search-img-a.png">
+      </ion-thumbnail>
+      <h2>Deal Name Goes Here</h2>
+      <p>
+        <span class="price">Price:</span>
+        <span class="cross-text"> $ 500.00 </span>
+        <span class="green-text"> $ 200.02</span>
+      </p>
+      <button ion-button outline item-end>View Deal</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/search-img-a.png">
+      </ion-thumbnail>
+      <h2>Deal Name Goes Here</h2>
+      <p>
+        <span class="price">Price:</span>
+        <span class="cross-text"> $ 500.00 </span>
+        <span class="green-text"> $ 200.02</span>
+      </p>
+      <button ion-button outline item-end>View Deal</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/search-img-a.png">
+      </ion-thumbnail>
+      <h2>Deal Name Goes Here</h2>
+      <p>
+        <span class="price">Price:</span>
+        <span class="cross-text"> $ 500.00 </span>
+        <span class="green-text"> $ 200.02</span>
+      </p>
+      <button ion-button outline item-end>View Deal</button>
+    </ion-item> -->
+
+  </ion-list>
+
+</ion-content>

@@ -19,6 +19,8 @@ import { File } from '@ionic-native/file';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Storage } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
