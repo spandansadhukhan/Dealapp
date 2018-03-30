@@ -1,0 +1,66 @@
+<!--
+  Generated template for the StampDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>stamp-details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list class="prod-info">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="{{loy_image}}" alt="">
+      </ion-thumbnail>
+      <h2>{{loyname}}</h2>
+      <p>Valid From:{{st_date|date:'dd/MM/yyyy'}}</p>
+      <p>Vaalid To:{{end_date|date:'dd/MM/yyyy'}} </p>
+     
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="free-product">
+    <ion-item>
+      <h2 class="text-center">Get a free product from the offers page</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <img src="assets/img/stamp-fill.jpg" alt="">
+            <p class=date>21/02</p>
+          </ion-col>
+          <ion-col col-2>
+            <img src="assets/img/stamp-blank.jpg" alt="">
+          </ion-col>
+          <ion-col col-2>
+            <img src="assets/img/stamp-blank.jpg" alt="">
+          </ion-col>
+          <ion-col col-2>
+            <img src="assets/img/stamp-blank.jpg" alt="">
+          </ion-col>
+          <ion-col col-2>
+            <img src="assets/img/stamp-blank.jpg" alt="">
+          </ion-col>
+          <ion-col col-2>
+            <img src="assets/img/stamp-blank.jpg" alt="">
+          </ion-col>
+          <ion-col col-2>
+            <img src="assets/img/stamp-blank.jpg" alt="">
+          </ion-col>
+        </ion-row>
+        </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="">
+    <ion-item>
+      <button ion-button full large (click)="startScanner()">STAMP ME</button>
+      <p class="text-center">{{desc}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -19,6 +19,8 @@ export class CategorylistPage {
   public categoryresult:any;
   public storeresult:any;
   public storeres:any;
+  public locationres:any;
+  public locationresult:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public authService:AuthServiceProvider) {
   }
@@ -27,7 +29,29 @@ export class CategorylistPage {
     console.log('ionViewDidLoad CategorylistPage');
     this.categorylist();
     this.storelist();
+    this.locationlist();
   }
+
+  locationlist(){
+    this.authService.getData('users/location_list_api').then((result) => {
+      this.locationres = result
+  console.log("RESULTTTTTTTTTTTTTTTTTT",result);
+      if(this.locationres.ACK == 1)
+      {
+        this.locationresult =  this.locationres.Location;
+        console.log('Location',this.locationresult);
+      }
+      else
+      {
+        this.locationresult = '';
+      }
+      
+    }, (err) => {
+      console.log(err);
+      // Error log
+    });
+  }
+
   
   categorylist(){
     this.authService.getData('users/category_list_api').then((result) => {
@@ -69,6 +93,10 @@ export class CategorylistPage {
       console.log(err);
       // Error log
     });
+  }
+
+  golocation(type,id){
+    this.navCtrl.push('CouponlistPage',{'type':type,'id':id});
   }
 
   couponlist(type,id){

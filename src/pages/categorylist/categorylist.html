@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Menu</ion-title>
+    <ion-title>Coupon</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,6 +15,16 @@
 
 <ion-content padding>
   <ion-list>
+      <h4>Location</h4>
+      <ion-item *ngFor="let loc of locationresult"> 
+          <h2 (click)= "golocation(loc.type,loc.location_id)">{{loc.location_name}}</h2>       
+      
+        <!-- <p><ion-icon name="calendar"></ion-icon> <span class="date">{{ol.buy_date}} </span></p>
+        <p><ion-icon name="pricetag"></ion-icon><span class="price"> {{ol.coupon_price}} </span></p>
+  
+        <button item-end class="button-edit"><ion-icon name="create"></ion-icon></button> -->
+        
+      </ion-item>
 <h4>Category</h4>
     <ion-item *ngFor="let caty of categoryresult"> 
       <h2 (click)= "couponlist(caty.type,caty.category_id)">{{caty.category_name}}</h2>     
