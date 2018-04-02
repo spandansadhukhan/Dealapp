@@ -84,7 +84,7 @@
 						<ion-item>
 							<ion-label>Choose This Package</ion-label>
 							
-							<ion-radio  (ionSelect)="mcqAnswer(p.package_id)"   value="{{p.package_id}}"></ion-radio>
+							<ion-radio  (ionSelect)="mcqAnswer(p.package_id,p.package_price)"   value="{{p.package_id}}"></ion-radio>
 						</ion-item>
 					</ion-list>
 					</ion-col>
@@ -93,7 +93,7 @@
 		</ion-card-content>
 	</ion-card>
 	
-	<button ion-button class="sign-in-btn" (click)="onpaypal(rForm.value)" type="submit" block>Pay Now</button>
+	<button ion-button class="sign-in-btn" (click)="paypalPayment(rForm.value)" type="submit" block>Pay Now</button>
   <button ion-button class="sign-in-btn" (click)="oncash(rForm.value)" type="submit" block>Pay Cash</button>
 
 	

@@ -101,11 +101,11 @@
     <plugin name="cordova-google-api-version" spec="0.0.1">
         <variable name="GOOGLE_API_VERSION" value="11.2.0" />
     </plugin>
-    <plugin name="cordova-plugin-googleplus" spec="^5.2.2">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.50913318540-89lblpjau2i8lqfjfdqiqejv15cmsa7l" />
-    </plugin>
     <plugin name="cordova-plugin-facebook4" spec="^1.7.1">
         <variable name="APP_ID" value="154347671946103" />
         <variable name="APP_NAME" value="Deal" />
+    </plugin>
+    <plugin name="cordova-plugin-googleplus" spec="^5.2.2">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.50913318540-89lblpjau2i8lqfjfdqiqejv15cmsa7l" />
     </plugin>
 </widget>

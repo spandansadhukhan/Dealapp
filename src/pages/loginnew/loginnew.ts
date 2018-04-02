@@ -78,9 +78,9 @@ public loguser:any;
   //  console.log("ABCDEFGHIJ", localStorage.getItem('userData'));
   }
 
-  ionViewWillLeave() {
-    this.events.publish('hideFooter', { isHidden: false});
-}
+//   ionViewWillLeave() {
+//     this.events.publish('hideFooter', { isHidden: false});
+// }
 
 
 
@@ -135,6 +135,8 @@ console.log(x[0]);
          console.log("FBRESULT",res);
          if(res.ACK== 1)
          {
+       
+         // this.events.publish('hideFooter', {isHidden: false});
           localStorage.setItem('userData',JSON.stringify(res.userdetail.User));
           this.storage.set('uid', res.userdetail.User['id']).then(() => {
                  
@@ -220,6 +222,7 @@ console.log(x[0]);
   }
 
   onSignup() {
+   
     this.navCtrl.push('SignupPage');
   }
 

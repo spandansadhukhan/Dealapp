@@ -21,58 +21,63 @@
         <ion-grid>
           <ion-row>
             <ion-col col-5><h6>Coupon Name:</h6></ion-col>
-            <ion-col col-7><p>Coupon Name here</p></ion-col>
+            <ion-col col-7><p>{{couponname}}</p></ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-5>
               <h6>Price:</h6>
             </ion-col>
             <ion-col col-7>
-              <p>$5.00</p></ion-col>
+              <p>${{couponprice}}</p></ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-5>
               <h6>Offer:</h6>
             </ion-col>
             <ion-col col-7>
-              <p>5% Discount</p>
+              <p>5% Off</p>
             </ion-col>
           </ion-row>
+          <ion-row *ngIf="coupontype=='O'">
+              <ion-col col-12>
+                <button type="button" (click)="paypalPayment(couponid,couponprice)" ion-button block>Save</button>
+              </ion-col>
+            </ion-row>
         </ion-grid>
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
+    <ion-card *ngIf="coupontype=='S'">
       <ion-card-header>Booking Person Details</ion-card-header>
       <ion-card-content class="booking-card">
         <ion-grid>
           <ion-row>
             <ion-col col-12>
               <h6>First Name:</h6>
-              <p>Rozer</p>
+              <p>{{fname}}</p>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-12>
               <h6>Last Name:</h6>
-              <p>Smith</p>
+              <p>{{lname}}</p>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-12>
               <h6>Email:</h6>
-              <p>rozer@natitsolved.com</p>
+              <p>{{email}}</p>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-12>
               <h6>Mobile:</h6>
-              <p>9831635919</p>
+              <p>{{mob_no}}</p>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-12>
-              <button type="button" ion-button block>Save</button>
+              <button type="button" (click)="paypalPayment()" ion-button block>Save</button>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -81,7 +86,7 @@
 
 
 
-    <ion-list>
+    <!-- <ion-list>
   
       <ion-item *ngIf="coupontype=='S'">
         <div class="box-area" text-center item-start>
@@ -106,7 +111,7 @@
         <button ion-button outline item-end *ngIf="couponno > 0"> Pay now</button>
         <button ion-button outline item-end *ngIf="couponno== 0"> Sold Out</button>
       </ion-item>
-
+    </ion-list> -->
 
       <!-- <ion-item>
         <div class="box-area" text-center item-start>
@@ -153,7 +158,7 @@
       
   
     
-    </ion-list>
+   
   
   </ion-content>
   
