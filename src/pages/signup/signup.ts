@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -21,8 +21,12 @@ export class SignupPage {
     public navParams: NavParams,
     public authService: AuthServiceProvider,
     public alertCtrl: AlertController,
-     private fb: FormBuilder
+     private fb: FormBuilder,
+     public events: Events
   ) {
+
+    //events.publish('hideFooter', {isHidden: true});
+
     this.rForm = fb.group({
       'first_name': [null, Validators.required],
       'last_name': [null, Validators.required],
@@ -74,9 +78,15 @@ export class SignupPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
+ 
+
 
   onLogin(data: object) {
     console.log(data);
+  }
+
+  login(){
+    this.navCtrl.setRoot('LoginnewPage');
   }
 
 }

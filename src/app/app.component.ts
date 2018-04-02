@@ -94,6 +94,7 @@ abc(){
  // alert("jdh")
   this.loguser =  JSON.parse(localStorage.getItem('userData'));   
   if(this.loguser){
+    this.events.publish('hideFooter', {isHidden: false});
     this.firstname=this.loguser.first_name;
     this.lastname=this.loguser.last_name;
     

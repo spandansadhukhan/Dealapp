@@ -59,7 +59,7 @@ export class ModalContentPage {
 
   dismiss() {
    // this.viewCtrl.dismiss();
-   this.navCtrl.push('CouponlistPage');
+   this.navCtrl.pop();
   }
 
   purchase(coupon_id, coupon_type) {

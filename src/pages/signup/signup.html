@@ -149,13 +149,13 @@ Password is required </p>
 
       <div padding class="p-t-5">
         <button ion-button class="g-plus-btn" (click)="onLogin(loginForm)" type="submit" block>
-          <img src="assets/img/g-plus-icon.png" alt="Facebook logo"> Login with Facebook </button>
+          <img src="assets/img/g-plus-icon.png" alt="Facebook logo"> GooglePlus </button>
       </div>
 
 
 
       <p class="bottom-text">Already have account?
-        <span> Sign In </span>
+        <span (click)="login()"> Sign In </span>
       </p>
 
     </ion-list>
